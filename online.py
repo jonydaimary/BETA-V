@@ -44,7 +44,7 @@ async def on_ready():
 def is_owner(ctx):
     return ctx.message.author.id == "498378677512437762" #replace_it_with_your_discord_id
 
-def is_soyal(ctx):
+def is_marcos(ctx):
     return ctx.message.author.id == "498378677512437762" 		
 
 
@@ -878,16 +878,23 @@ async def avatar(ctx, user: discord.Member=None):
         embed.set_image(url = user.avatar_url)
         await client.say(embed=embed)
 
+	
+
 @client.command(pass_context = True)
 async def meme(ctx):
-    choices = ['https://cheezburger.com/6946821/37-funny-random-memes-and-tweets-thatll-make-your-abs-sore', 'https://img.memecdn.com/english_o_869587.webp', 'https://i.imgur.com/E45OMsz.png', 'https://i.imgur.com/ONhilpQ.png', 'https://imgur.com/gallery/MzzrUWL', 'https://imgur.com/gallery/wrDxd43', 'https://imgur.com/gallery/HmQvoyP', 'https://imgur.com/gallery/JZIYuUZ', 'https://imgur.com/gallery/CTJKXOk', 'https://imgur.com/gallery/otW0j4u', 'https://imgur.com/gallery/OwILYdb', 'https://img.memecdn.com/everybody-knows-muricans-don-amp-039-t-speak-english-the-same-way-mexicans-don-amp-039-t-speak-spanish_c_7233205.webp', 'https://img.memecdn.com/english-reaction-when-they-heard-about-eu_c_6994013.webp', 'https://images3.memedroid.com/images/UPLOADED393/5b0c3ee92799f.jpeg' , 'https://images7.memedroid.com/images/UPLOADED850/5b0c2d7dd6049.jpeg', 'https://images7.memedroid.com/images/UPLOADED905/5b0c30c468fa8.jpeg', 'https://images7.memedroid.com/images/UPLOADED726/5b0c2d4c5f288.jpeg', 'https://images7.memedroid.com/images/UPLOADED936/5b0c2a90adbe7.jpeg', 'https://images7.memedroid.com/images/UPLOADED764/5b0c1e491c669.jpeg', 'https://images3.memedroid.com/images/UPLOADED922/5b0c284b71cd0.jpeg', 'https://images3.memedroid.com/images/UPLOADED207/5b0c265a58cf4.jpeg', 'https://images7.memedroid.com/images/UPLOADED920/5b0c06813741a.jpeg', 'https://images3.memedroid.com/images/UPLOADED46/5a91c871e61f1.jpeg', 'https://images7.memedroid.com/images/UPLOADED737/5a91c7f234bd2.jpeg', 'https://images7.memedroid.com/images/UPLOADED757/5a91bd39e1323.jpeg', 'https://images7.memedroid.com/images/UPLOADED963/5a91b4f7aba7e.jpeg', 'https://images7.memedroid.com/images/UPLOADED794/5a91ac0900506.jpeg', 'https://images3.memedroid.com/images/UPLOADED188/5a91aa326ad4e.jpeg', 'https://www.google.co.in/search?q=meme&rlz=1C1CHBF_enIN808IN808&source=lnms&tbm=isch&sa=X&ved=0ahUKEwjR59bhhZPfAhUZEnIKHRzUAvkQ_AUIDigB&biw=1366&bih=664']
-    r, g, b = tuple(int(x * 255) for x in colorsys.hsv_to_rgb(random.random(), 1, 1))
-    embed = discord.Embed(title='Random Meme', description=':upside_down:', color = discord.Color((r << 16) + (g << 8) + b))
-    embed.set_thumbnail(url='https://cdn.discordapp.com/attachments/520159870448566287/520829749095038977/pubg.png') 
-    embed.set_image(url = random.choice(choices))
-    await client.send_typing(ctx.message.channel)
-    await client.send_message(ctx.message.channel, embed=embed) 
+    colour = '0x' + '008000'
+    async with aiohttp.ClientSession() as session:
+        async with session.get("https://api.reddit.com/r/me_irl/random") as r:
+            data = await r.json()
+            embed = discord.Embed(title='<a:OnThaCoco:515853700682743809> <a:OnThaCoco:515853700682743809> Random Meme <a:OnThaCoco:515853700682743809> <a:OnThaCoco:515853700682743809>', description='from reddit', color=discord.Color(int(colour, base=16)))
+            embed.set_image(url=data[0]["data"]["children"][0]["data"]["url"])
+            embed.set_footer(text=f'Requested by: {ctx.message.author.display_name}', icon_url=f'{ctx.message.author.avatar_url}')
+            embed.timestamp = datetime.datetime.utcnow()
+            await client.say(embed=embed)
 
+		
+		
+		
 @client.command(pass_context=True, aliases=['server'])
 @commands.has_permissions(kick_members=True)
 async def membercount(ctx, *args):
@@ -964,6 +971,39 @@ async def channelsetup(ctx):
     await client.create_channel(server, 'pokémon_dueling',user)
     await client.create_channel(server, 'pokémon_commands',user)
     await client.create_channel(server, 'A_F_K', type=discord.ChannelType.voice)
+
+
+
+
+@client.command(pass_context = True)
+async def invites(ctx,*,user:discord.Member=None):
+    invite = await client.invites_from(ctx.message.server)
+    if user is None:
+        for invite in invite:
+          if invite.inviter == ctx.message.author:
+              r, g, b = tuple(int(x * 255) for x in colorsys.hsv_to_rgb(random.random(), 1, 1))
+              embed = discord.Embed(color = discord.Color((r << 16) + (g << 8) + b))
+              embed.add_field(name = 'Link used for inviting:',value =f'{invite.url}'.format(), inline=False)
+              embed.add_field(name = 'Invites from this link:',value =f'{invite.uses}', inline=False)
+              embed.add_field(name = 'Created at:',value =f'{invite.created_at}', inline=False)
+              embed.add_field(name = 'Channel:',value =f'{invite.channel}', inline=False)
+              embed.add_field(name = 'ID:',value =f'{invite.id}', inline=False)
+              await client.say(embed=embed)
+
+    else:
+        for invite in invite:
+          if invite.inviter == user:
+              r, g, b = tuple(int(x * 255) for x in colorsys.hsv_to_rgb(random.random(), 1, 1))
+              embed = discord.Embed(color = discord.Color((r << 16) + (g << 8) + b))
+              embed.add_field(name = 'Link used for inviting:',value =f'{invite.url}'.format(), inline=False)
+              embed.add_field(name = 'Invites from this link:',value =f'{invite.uses}', inline=False)
+              embed.add_field(name = 'Created at:',value =f'{invite.created_at}', inline=False)
+              embed.add_field(name = 'Channel:',value =f'{invite.channel}', inline=False)
+              embed.add_field(name = 'ID:',value =f'{invite.id}', inline=False)
+              await client.say(embed=embed)
+
+
+
 
 
 
