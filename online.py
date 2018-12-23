@@ -391,15 +391,6 @@ async def kick(ctx,user:discord.member):
 	
 	
 
-
-@client.command(pass_context = True)
-async def stop(ctx):
-    for x in client.voice_clients:
-        if(x.server == ctx.message.server):
-            return await x.disconnect()
-
-    return await client.say("I am not playing anyting???!")
-
         
 
 @client.command(pass_context = True)
