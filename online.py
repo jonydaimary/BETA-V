@@ -16,7 +16,7 @@ import aiohttp
 
 
 Forbidden= discord.Embed(title="Permission Denied", description="1) Please check whether you have permission to perform this action or not. \n2) Please check whether my role has permission to perform this action in this channel or not. \n3) Please check my role position.", color=0x00ff00)
-client = commands.Bot(description="MultiVerse Official Bot", command_prefix=commands.when_mentioned_or("!!"), pm_help = True)
+client = commands.Bot(description="marcos Official Bot", command_prefix=commands.when_mentioned_or("!!"), pm_help = True)
 client.remove_command('help')
 
 
@@ -44,7 +44,7 @@ async def on_ready():
 def is_owner(ctx):
     return ctx.message.author.id == "498378677512437762" #replace_it_with_your_discord_id
 
-def is_soyal(ctx):
+def is_marcos(ctx):
     return ctx.message.author.id == "498378677512437762" 		
 
 
@@ -121,7 +121,6 @@ async def help(ctx):
       embed.add_field(name = 'React with 😁 ',value ='FUN COMMANDS.',inline = False)
       embed.add_field(name = 'React with 👥 ',value ='GENERAL COMMANDS',inline = False)
       embed.add_field(name = 'React with ⏱ ',value ='EMOJI COMMANDS',inline = False)
-      dmmessage = await client.send_message(author,embed=embed)
       reaction1 = '⚙'
       reaction2 = '😁'
       reaction3 = '👥'
