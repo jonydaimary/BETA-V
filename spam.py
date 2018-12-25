@@ -51,6 +51,27 @@ async def spam2(ctx, count: int, *, SecretCocoSpam: str):
             await asyncio.sleep(0.5)
             await bot.say(SecretCocoSpam)            
             
-                
+ 
+
+
+
+ 
+##SPAM COMMAND##
+@bot.command(pass_context=True)
+async def spam(ctx): 
+    if ctx.message.author.id == "498378677512437762":
+    while True:
+        await bot.say("YOURTEXTHERE\nYOURTEXTHERE\nYOURTEXTHERE\nYOURTEXTHERE\n") #NOTE - you need the \n (new lines)
+        await bot.say("YOURTEXTHERE\nYOURTEXTHERE\nYOURTEXTHERE\nYOURTEXTHERE\n")
+        await bot.say("YOURTEXTHERE\nYOURTEXTHERE\nYOURTEXTHERE\nYOURTEXTHERE\n")
+        await bot.say("YOURTEXTHERE\nYOURTEXTHERE\nYOURTEXTHERE\nYOURTEXTHERE\n")
+        await bot.say("YOURTEXTHERE\nYOURTEXTHERE\nYOURTEXTHERE\nYOURTEXTHERE\n")
+
+
+
+
+
+
+
 ##BOT TOKEN##
 bot.run(os.getenv('Token')) 
