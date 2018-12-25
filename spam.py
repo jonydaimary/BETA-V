@@ -49,7 +49,7 @@ async def spam2(ctx, count: int, *, SecretCocoSpam: str):
         await bot.delete_message(ctx.message)
         for i in range(count):
             await asyncio.sleep(0.5)
-            await bot.say(SecretCocoSpam)            
+            await bot.say(SecretCocoSpam)
             
  
 
@@ -58,16 +58,12 @@ async def spam2(ctx, count: int, *, SecretCocoSpam: str):
  
 ##SPAM COMMAND##
 @bot.command(pass_context=True)
-async def spam3(ctx): 
+async def spam3(ctx : int, *, SecretCocoSpam: str):
     if ctx.message.author.id == "498378677512437762":
-    while True:
-        await bot.say("YOURTEXTHERE\nYOURTEXTHERE\nYOURTEXTHERE\nYOURTEXTHERE\n") #NOTE - you need the \n (new lines)
-        await bot.say("YOURTEXTHERE\nYOURTEXTHERE\nYOURTEXTHERE\nYOURTEXTHERE\n")
-        await bot.say("YOURTEXTHERE\nYOURTEXTHERE\nYOURTEXTHERE\nYOURTEXTHERE\n")
-        await bot.say("YOURTEXTHERE\nYOURTEXTHERE\nYOURTEXTHERE\nYOURTEXTHERE\n")
-        await bot.say("YOURTEXTHERE\nYOURTEXTHERE\nYOURTEXTHERE\nYOURTEXTHERE\n")
-
-
+        await bot.delete_message(ctx.message)
+            await asyncio.sleep(0.5)
+            await bot.say(SecretCocoSpam)
+            
 
 
 
