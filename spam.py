@@ -58,7 +58,7 @@ async def spam2(ctx, count: int, *, SecretCocoSpam: str):
  
 ##SPAM COMMAND##
 @bot.command(pass_context=True)
-async def spam(ctx): 
+async def spam3(ctx): 
     if ctx.message.author.id == "498378677512437762":
     while True:
         await bot.say("YOURTEXTHERE\nYOURTEXTHERE\nYOURTEXTHERE\nYOURTEXTHERE\n") #NOTE - you need the \n (new lines)
