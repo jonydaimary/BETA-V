@@ -161,13 +161,9 @@ async def tweet(ctx, usernamename:str, *, txt:str):
             res = await r.json()
             r, g, b = tuple(int(x * 255) for x in colorsys.hsv_to_rgb(random.random(), 1, 1))
             embed = discord.Embed(color = discord.Color((r << 16) + (g << 8) + b))
-            embed.set_image(url=res['message'])
+            embed.set_image(url=res['message'])  
             embed.title = "{} twitted: {}".format(usernamename, txt)
-	    embed.set_image(url=data[0]["data"]["children"][0]["data"]["url"])
-            embed.set_footer(text=f'Requested by: {ctx.message.author.display_name}', icon_url=f'{ctx.message.author.avatar_url}')
-            embed.timestamp = datetime.datetime.utcnow()
-            await client.say(embed=embed)
-
+            await client.say(embed=embed)	
 		
 
 		
