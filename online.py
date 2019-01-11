@@ -230,10 +230,13 @@ async def lovedetect(ctx, user: discord.Member = None, *, user2: discord.Member 
     url = f"https://nekobot.xyz/api/imagegen?type=ship&user1={useravatar1}&user2={useravatar2s}"
     async with aiohttp.ClientSession() as cs:
         async with cs.get(url) as r:
-            res = await r.json()
+            data = await r.json()
             r, g, b = tuple(int(x * 255) for x in colorsys.hsv_to_rgb(random.random(), 1, 1))
             embed = discord.Embed(title=f"{shipuser1} ❤ {shipuser2} Love each others", description=f"Love\n`{counter_}` Score:**{score}% **\nLoveName:**{finalName}**", color = discord.Color((r << 16) + (g << 8) + b))
             embed.set_image(url=res['message'])
+	    embed.set_image(url=data[0]["data"]["children"][0]["data"]["url"])
+            embed.set_footer(text=f'Requested by: {ctx.message.author.display_name}', icon_url=f'{ctx.message.author.avatar_url}')
+            embed.timestamp = datetime.datetime.utcnow()
             await client.say(embed=embed)	
 	
 	
