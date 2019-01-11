@@ -157,7 +157,7 @@ async def meme(ctx):
 async def tweet(ctx, usernamename:str, *, txt:str):
     colour = '0x' + '008000'
     url = f"https://nekobot.xyz/api/imagegen?type=tweet&username={usernamename}&text={txt}"
-    async with aiohttp.ClientSession() as cs:
+    async with aiohttp.ClientSession() as r:
         async with cs.get(url) as r:
             data = await r.json()                   
             embed.title = "{} twitted: {}".format(usernamename, txt)
