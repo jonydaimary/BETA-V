@@ -151,21 +151,6 @@ async def meme(ctx):
 	
 	
 	
-	
-
-@client.command(pass_context=True)
-async def tweet(ctx, usernamename:str, *, txt:str):
-    colour = '0x' + '008000'
-    url = f"https://nekobot.xyz/api/imagegen?type=tweet&username={usernamename}&text={txt}"
-    async with aiohttp.ClientSession() as r:
-        async with cs.get(url) as r:
-            data = await r.json()                   
-            embed.title = "{} twitted: {}".format(usernamename, txt)
-	    embed.set_image(url=data[0]["data"]["children"][0]["data"]["url"])
-	    embed.set_footer(text=f'Requested by: {ctx.message.author.display_name}', icon_url=f'{ctx.message.author.avatar_url}')
-            embed.timestamp = datetime.datetime.utcnow()
-            await client.say(embed=embed)	
-		
 
 		
 @client.command(pass_context=True)
