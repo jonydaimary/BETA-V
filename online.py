@@ -810,6 +810,7 @@ async def tweet2(ctx, usernamename:str, *, txt:str):
             embed.set_image(url=res['message'])  
             embed.title = "{} twitted: {}".format(usernamename, txt)
             embed.set_footer(text=f"Requested by {ctx.message.author.name}", icon_url=f"{ctx.message.author.avatar_url}")
+	    embed.timestamp = datetime.datetime.utcnow()
             await client.say(embed=embed)
             
 
