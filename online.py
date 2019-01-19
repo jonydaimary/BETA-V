@@ -801,7 +801,7 @@ async def avatar(ctx, user: discord.Member=None):
 	
 	
 @client.command(pass_context=True)
-async def tweet(ctx, usernamename:str, *, txt:str):
+async def tweet2(ctx, usernamename:str, *, txt:str):
     url = f"https://nekobot.xyz/api/imagegen?type=tweet&username={usernamename}&text={txt}"
     async with aiohttp.ClientSession() as cs:
         async with cs.get(url) as r:
