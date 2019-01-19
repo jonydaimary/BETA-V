@@ -792,7 +792,6 @@ async def avatar(ctx, user: discord.Member=None):
         embed.set_thumbnail(url='https://cdn.discordapp.com/attachments/520159870448566287/520829749095038977/pubg.png') 
         embed.set_image(url = user.avatar_url)
 	embed.set_footer(text=f'Requested by: {ctx.message.author.display_name}', icon_url=f'{ctx.message.author.avatar_url}')
-        embed.timestamp = datetime.datetime.utcnow()
         await client.say(embed=embed)
 
 
