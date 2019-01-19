@@ -798,6 +798,20 @@ async def avatar(ctx, user: discord.Member=None):
         embed.set_image(url = user.avatar_url)
         await client.say(embed=embed)
 
+	
+	
+@client.command(pass_context=True)
+async def tweet(ctx, usernamename:str, *, txt:str):
+    url = f"https://nekobot.xyz/api/imagegen?type=tweet&username={usernamename}&text={txt}"
+    async with aiohttp.ClientSession() as cs:
+        async with cs.get(url) as r:
+            res = await r.json()           
+            embed = discord.Embed(color=0XFF69B4) 
+            embed.set_image(url=res['message'])  
+            embed.title = "{} twitted: {}".format(usernamename, txt)
+            embed.set_footer(text=f"Requested by {ctx.message.author.name}", icon_url=f"{ctx.message.author.avatar_url}")
+            await client.say(embed=embed)
+            
 
 
 client.run(os.getenv('Token')) 
