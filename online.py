@@ -542,14 +542,16 @@ async def userinfo(ctx, user: discord.Member):
     if ctx.message.author.bot:
       return
     else:
-      r, g, b = tuple(int(x * 255) for x in colorsys.hsv_to_rgb(random.random(), 1, 1))
-      embed = discord.Embed(title="{}'s info".format(user.name), description="Here's what I could find.", color = discord.Color((r << 16) + (g << 8) + b))
+      embed = discord.Embed(title="{}'s info".format(user.name), description="Here's what I could find.", color=0XFF69B4)
       embed.add_field(name="Name", value=user.name, inline=True)
       embed.add_field(name="ID", value=user.id, inline=True)
       embed.add_field(name="Status", value=user.status, inline=True)
       embed.add_field(name="Highest role", value=user.top_role)
       embed.add_field(name="Joined", value=user.joined_at)
       embed.set_thumbnail(url=user.avatar_url)
+      embed.set_footer(text=f"Requested by {ctx.message.author.name}", icon_url=f"{ctx.message.author.avatar_url}")
+      embed.timestamp = datetime.datetime.utcnow()
+      embed.set_image(url = user.avatar_url)
       await client.say(embed=embed)
 
 
