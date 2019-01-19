@@ -513,17 +513,6 @@ async def friend(ctx, user:discord.Member,):
     await client.add_roles(ctx.message.mentions[0], role)
 
 
-@client.command(pass_context=True)
-async def ownerinfo(ctx):
-    embed = discord.Embed(title="Information about owner", description="bot name- @DAB#1253 
-			  bot owner name- @marcos.#0290  ", color=0XFF69B4)
-    embed.add_field(name=" bot owner name- @marcos.#0290 ")
-    embed.add_field(name="Site- coming soon...", value="Thanks for adding our bot", inline=True)
-    embed.set_footer(text=f"Requested by {ctx.message.author.name}", icon_url=f"{ctx.message.author.avatar_url}")
-    embed.timestamp = datetime.datetime.utcnow()
-    await client.say(embed=embed)		
-
-
 
 @client.command(pass_context=True)  
 @commands.has_permissions(kick_members=True)
