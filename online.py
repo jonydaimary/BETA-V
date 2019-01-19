@@ -130,7 +130,7 @@ async def help(ctx):
       await client.add_reaction(dmmessage, reaction2)
       await client.add_reaction(dmmessage, reaction3)
       await client.add_reaction(dmmessage, reaction4)
-      await client.say('I sent you the list of commands in a private message. Check your direct messages')
+      await client.say('*Check your direct messages*')
     
 	
 	
