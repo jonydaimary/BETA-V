@@ -325,6 +325,7 @@ async def happybirthday(ctx, *, msg = None):
       return
     if not msg: await client.say("Please specify a user to wish")
     await client.say('Happy birthday have a nice day' + msg + ' http://imgur.com/gallery/PbyNCR2')
+    await client.say(embed=embed)	
     return
 
 
