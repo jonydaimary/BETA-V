@@ -766,7 +766,7 @@ async def on_message_delete(message):
         if channel.name == channelname:
           user = message.author
       for channel in user.server.channels:
-        if channel.name == 'soyal-log':
+        if channel.name == 'information-log':
           logchannel = channel
           r, g, b = tuple(int(x * 255) for x in colorsys.hsv_to_rgb(random.random(), 1, 1))
           embed = discord.Embed(color = discord.Color((r << 16) + (g << 8) + b))
@@ -778,7 +778,7 @@ async def on_message_delete(message):
 		
 
 @client.command(pass_context = True)
-async def avatar2(ctx, user: discord.Member=None):
+async def avatar(ctx, user: discord.Member=None):
     if user is None:
         embed = discord.Embed(title=f'Avatar', description="Here's your avatar that you've requested...\n Don't misuse this cmd...", color=0XFF69B4)
         embed.add_field(name='User: {}'.format(ctx.message.author.name), value='Avatar:', inline=True)
