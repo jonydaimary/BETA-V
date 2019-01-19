@@ -72,18 +72,18 @@ async def meme(ctx):
             await client.say(embed=embed)		
 	
 	
-
 @client.command(pass_context=True)
 async def tweet(ctx, usernamename:str, *, txt:str):
     url = f"https://nekobot.xyz/api/imagegen?type=tweet&username={usernamename}&text={txt}"
     async with aiohttp.ClientSession() as cs:
         async with cs.get(url) as r:
-            res = await r.json()
-            r, g, b = tuple(int(x * 255) for x in colorsys.hsv_to_rgb(random.random(), 1, 1))
-            embed = discord.Embed(color = discord.Color((r << 16) + (g << 8) + b))
+            res = await r.json()           
+            embed = discord.Embed(color=0XFF69B4) 
             embed.set_image(url=res['message'])  
             embed.title = "{} twitted: {}".format(usernamename, txt)
-            await client.say(embed=embed)	
+            embed.set_footer(text=f"Requested by {ctx.message.author.name}", icon_url=f"{ctx.message.author.avatar_url}")	 
+            await client.say(embed=embed)
+            
 		
 	
 		
@@ -799,19 +799,7 @@ async def avatar(ctx, user: discord.Member=None):
         await client.say(embed=embed)
 
 	
-	
-@client.command(pass_context=True)
-async def tweet2(ctx, usernamename:str, *, txt:str):
-    url = f"https://nekobot.xyz/api/imagegen?type=tweet&username={usernamename}&text={txt}"
-    async with aiohttp.ClientSession() as cs:
-        async with cs.get(url) as r:
-            res = await r.json()           
-            embed = discord.Embed(color=0XFF69B4) 
-            embed.set_image(url=res['message'])  
-            embed.title = "{} twitted: {}".format(usernamename, txt)
-            embed.set_footer(text=f"Requested by {ctx.message.author.name}", icon_url=f"{ctx.message.author.avatar_url}")	 
-            await client.say(embed=embed)
-            
+
 
 
 client.run(os.getenv('Token')) 
