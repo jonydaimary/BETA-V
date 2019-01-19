@@ -824,7 +824,6 @@ async def lovedetect2(ctx, user: discord.Member = None, *, user2: discord.Member
 @client.command(pass_context=True)
 async def ownerinfo(ctx):
     embed.set_author(name=" Information about owner ")
-    embed = discord.Embed(title=" Bot Name ", description=" @DAB#1253  ", color=0x00ff00) 
     embed = discord.Embed(title=" bot owner name ",  description=" @marcos.#0290 ")
     embed.add_field(name="Site- coming soon...", value="Thanks for adding our bot", inline=True)
     embed.set_footer(text=f"Requested by {ctx.message.author.name}", icon_url=f"{ctx.message.author.avatar_url}")
