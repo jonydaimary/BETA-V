@@ -364,16 +364,20 @@ async def userinfo(ctx, user: discord.Member):
       await client.say(embed=embed)
 
 
-
 @client.command(pass_context = True)
 @commands.has_permissions(manage_nicknames=True)     
-async def setnick(ctx, user: discord.Member, *, nickname):
-    await client.change_nickname(user, nickname)
-    await client.delete_message(ctx.message)
-    for channel in user.server.channels:
-      if channel.name == 'soyal-log':
-          embed=discord.Embed(title="Changed Nickname of User!", description="**{0}** nickname was changed by **{1}**!".format(member, ctx.message.author), color=0x0521F6)
-          await client.send_message(channel, embed=embed)
+async def setnick(ctx, user: discord.Member=None, *, nickname=None):
+    if user is None:
+      await client.say('Please tag a person to change nickname. Example- ``!!setnick @user <new nickname>``')
+      return
+    else:
+      await client.change_nickname(user, nickname)
+      await client.delete_message(ctx.message)
+      for channel in user.server.channels:
+        if channel.name == 'information-log':
+            embed=discord.Embed(title="Changed Nickname of User!", description="**{0}** nickname was changed by **{1}**!".format(member, ctx.message.author), color=0x0521F6)
+            await client.send_message(channel, embed=embed)
+		
 
 
 
