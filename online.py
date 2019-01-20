@@ -522,8 +522,8 @@ async def on_message_delete(message):
 		
 @client.command(pass_context = True)
 async def avatar(ctx, user: discord.Member=None):
-    if user is None:
-        embed = discord.Embed(title=f'Avatar', description="Here's your avatar that you've requested...\n Don't misuse this cmd...", color=0XFF69B4)
+    if user is None:   
+	embed = discord.Embed(color=0Xf9fcfc)
         embed.add_field(name='User: {}'.format(ctx.message.author.name), value='Avatar:', inline=True)
         embed.set_thumbnail(url='https://cdn.discordapp.com/attachments/532088532576239647/536173122257420360/dab.webp') 
         embed.set_image(url = ctx.message.author.avatar_url)
@@ -531,7 +531,7 @@ async def avatar(ctx, user: discord.Member=None):
         embed.timestamp = datetime.datetime.utcnow()
         await client.say(embed=embed)
     else:
-        embed = discord.Embed(title=f'Avatar', description="Here's your avatar that you've requested...\n Don't misuse this cmd...", color=0XFF69B4)
+        embed = discord.Embed(color=0Xf9fcfc)
         embed.add_field(name='User: {}'.format(user.name), value='Avatar:', inline=True)
         embed.set_thumbnail(url='https://cdn.discordapp.com/attachments/532088532576239647/536173122257420360/dab.webp') 
         embed.set_footer(text=f"Requested by {ctx.message.author.name}", icon_url=f"{ctx.message.author.avatar_url}")
@@ -640,12 +640,11 @@ async def kiss(ctx, user: discord.Member):
 	
 @client.command(pass_context=True)
 async def hug(ctx, user: discord.Member):
-    r, g, b = tuple(int(x * 255) for x in colorsys.hsv_to_rgb(random.random(), 1, 1))
     if user.id == ctx.message.author.id:
         await client.say("{} Wanted to hug himself/herself , good luck on that you will look like an idiot trying to do it".format(user.mention))
     else:
         randomurl = ["http://gifimage.net/wp-content/uploads/2017/09/anime-hug-gif-5.gif", "https://media1.tenor.com/images/595f89fa0ea06a5e3d7ddd00e920a5bb/tenor.gif?itemid=7919037", "https://media.giphy.com/media/NvkwNVuHdLRSw/giphy.gif"]
-        embed = discord.Embed(title=f"{user.name} You just got a hug from {ctx.message.author.name}", color = discord.Color((r << 16) + (g << 8) + b))
+        embed = discord.Embed(title=f"{user.name} You just got a hug from {ctx.message.author.name}", color=0Xf9fcfc)
         embed.set_image(url=random.choice(randomurl))
         await client.say(embed=embed)	
 	
