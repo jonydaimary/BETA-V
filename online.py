@@ -736,6 +736,7 @@ async def help(ctx):
     author = ctx.message.author
     embed = discord.Embed(title="__Command Prefix:__ !! ", color=0Xf9fcfc)
     embed.add_field(name="__**Commands**__", value="`avatar <user>` -  Avatar of mentioned user. \n`meme` - This will show a meme image. \n`slap <user>` - This will slap the user. \n`joke` - This will tell you a joke. ")
+    embed.add_field(name="__**Music Commands**__", value="`play` - This will play the audio you want. \n>`pause` - will pause the audio."
     embed.set_thumbnail(url='https://cdn.discordapp.com/attachments/532088532576239647/536173122257420360/dab.webp') 
     embed.set_footer(text=f"Requested by {ctx.message.author.name}", icon_url=f"{ctx.message.author.avatar_url}")
     embed.timestamp = datetime.datetime.utcnow()
