@@ -618,9 +618,7 @@ async def slap(ctx, user: discord.Member = None):
         await client.say(f"{ctx.message.author.mention} ```Proper usage is\n\n>slap <mention a user>```")
     else:
         embed = discord.Embed(title=f"{ctx.message.author.name} Just slapped the shit out of {user.name}!", color=0Xf9fcfc)
-        embed.set_image(url=random.choice(gifs))
-	embed.set_footer(text=f"Requested by {ctx.message.author.name}", icon_url=f"{ctx.message.author.avatar_url}")
-        embed.timestamp = datetime.datetime.utcnow()
+        embed.set_image(url=random.choice(gifs))	
         await client.say(embed=embed)
 	
 	
