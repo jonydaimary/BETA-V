@@ -747,20 +747,7 @@ async def on_member_join(member):
     embed.set_thumbnail(url=member.avatar_url)
     await client.send_message(channel, embed=embed)		
 
-	
-@client.command(pass_context=True)
-async def help(ctx):
-   if ctx.message.author.bot:
-    return
-   else:
-    author = ctx.message.author
-    embed = discord.Embed(title="__Command Prefix:__ !! ", color=0XFF69B4)
-    embed.add_field(name='`avatar` - Avatar of the user ', description="", value='' , inline=True)
-    embed.set_thumbnail(url='https://cdn.discordapp.com/attachments/532088532576239647/536173122257420360/dab.webp') 
-    embed.set_footer(text=f"Requested by {ctx.message.author.name}", icon_url=f"{ctx.message.author.avatar_url}")
-    embed.timestamp = datetime.datetime.utcnow()
-    await client.say(embed=embed)
- 
+
 
 @client.command(pass_context=True)
 async def merrychristmas(ctx, user:discord.Member=None):
