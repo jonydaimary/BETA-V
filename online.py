@@ -730,7 +730,7 @@ async def thuglife(ctx):
 async def help(ctx):
     embed = discord.Embed(title="__Command Prefix:__ !! ", color=0Xf9fcfc)
     embed.add_field(name="__**commands**__", value="`avatar <user>` -  Avatar of mentioned user. \n`meme` - This will show a meme image. \n`slap <user>` - This will slap the user. \n`joke` - This will tell you a joke. ", inline=True)
-    embed.add_field(name="__**music commands**__", value="`play` - This will play the audio you want. \n`pause` - will pause the audio. \n`!!resume` - To Resume The Paused Song. \n`!!skip` - To skip music. \n`!!stop` -  To Bot disconnected. \n`!!song` - To Check The Current playing song.") 
+    embed.add_field(name="__**music commands**__", value="`play` - This will play the audio you want. \n`pause` - will pause the audio. \n`resume` - To Resume The Paused Song. \n`skip` - To skip music. \n`stop` -  To Bot disconnected. \n`song` - To Check The Current playing song.") 
     embed.set_thumbnail(url='https://cdn.discordapp.com/attachments/532088532576239647/536173122257420360/dab.webp') 
     embed.set_footer(text=f"Requested by {ctx.message.author.name}", icon_url=f"{ctx.message.author.avatar_url}")
     embed.timestamp = datetime.datetime.utcnow()
