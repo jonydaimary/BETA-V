@@ -525,7 +525,7 @@ async def on_message_delete(message):
 async def avatar(ctx, user: discord.Member=None):
     if user is None:
         await client.say('Please tag a person to change nickname. Example- ``mv!avatar <@user>``')
-        embed = discord.Embed(title=f'Avatar', description="Here's your avatar that you've requested...\n Don't misuse this cmd...", color=0Xf9fcfc)
+        embed = discord.Embed(title=f'Avatar', color=0Xf9fcfc)
         embed.add_field(name='User: {}'.format(ctx.message.author.name), value='Avatar:', inline=True)
         embed.set_thumbnail(url='https://cdn.discordapp.com/attachments/532088532576239647/536173122257420360/dab.webp') 
         embed.set_image(url = ctx.message.author.avatar_url)
@@ -533,7 +533,7 @@ async def avatar(ctx, user: discord.Member=None):
         embed.timestamp = datetime.datetime.utcnow()
         await client.say(embed=embed)
     else:
-        embed = discord.Embed(title=f'Avatar', description="Here's your avatar that you've requested...\n Don't misuse this cmd...", color=0Xf9fcfc)
+        embed = discord.Embed(title=f'Avatar', color=0Xf9fcfc)
         embed.add_field(name='User: {}'.format(user.name), value='Avatar:', inline=True)
         embed.set_thumbnail(url='https://cdn.discordapp.com/attachments/532088532576239647/536173122257420360/dab.webp') 
         embed.set_footer(text=f"Requested by {ctx.message.author.name}", icon_url=f"{ctx.message.author.avatar_url}")
