@@ -23,7 +23,7 @@ client.remove_command('help')
 
 async def status_task():
     while True:
-        await client.change_presence(game=discord.Game(name='type help'))
+        await client.change_presence(game=discord.Game(name='type !!help'))
         await asyncio.sleep(5)
         await client.change_presence(game=discord.Game(name='with 31121 users'))
         await asyncio.sleep(5)
