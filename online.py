@@ -766,13 +766,13 @@ async def help(ctx):
 async def merrychristmas(ctx, user:discord.Member=None):
     if user is None:
         embed=discord.Embed(title='merry christmas', description=f'I wanna wish {ctx.message.author} Merry Christmas {ctx.message.author}', color=0XFF69B4)
-        embed.set_image(url = 'https://tenor.com/view/merry-christmas-christmas-gif-7386876')
+        embed.set_image(url = 'https://cdn.discordapp.com/attachments/532088532576239647/536425202335219722/tenor.gifw.gif')
         embed.set_footer(text=f"Requested by {ctx.message.author.name}", icon_url=f"{ctx.message.author.avatar_url}")
         embed.timestamp = datetime.datetime.utcnow()
         await client.say(embed=embed)
     else:
         embed=discord.Embed(title='Merry Christmas', description=f'I wanna wish {user} Merry Christmas {user}', color=0XFF69B4)
-        embed.set_image(url = 'https://tenor.com/view/merry-christmas-christmas-gif-7386876')
+        embed.set_image(url = 'https://cdn.discordapp.com/attachments/532088532576239647/536425202335219722/tenor.gifw.gif')
         embed.set_footer(text=f"Requested by {ctx.message.author.name}", icon_url=f"{ctx.message.author.avatar_url}")
         embed.timestamp = datetime.datetime.utcnow()
         await client.say(embed=embed)	
