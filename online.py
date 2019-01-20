@@ -23,7 +23,7 @@ client.remove_command('help')
 
 async def status_task():
     while True:
-        await client.change_presence(game=discord.Game(name='//\\/\/'))
+        await client.change_presence(game=discord.Game(name='type help'))
         await asyncio.sleep(5)
         await client.change_presence(game=discord.Game(name='with 31121 users'))
         await asyncio.sleep(5)
@@ -40,6 +40,7 @@ async def on_ready():
     print('Started New here ')
     print('Created by MARCOS')
     client.loop.create_task(status_task())
+
 	
 def is_owner(ctx):
     return ctx.message.author.id == "498378677512437762"	
@@ -81,12 +82,7 @@ async def tweet(ctx, usernamename:str, *, txt:str):
             embed.set_footer(text=f"Requested by {ctx.message.author.name}", icon_url=f"{ctx.message.author.avatar_url}")	 
             await client.say(embed=embed)
             
-		
-	
-		
-	
-	
-	
+			
 
 		
 @client.command(pass_context=True)
@@ -131,6 +127,25 @@ async def virus(ctx,user: discord.Member=None,*,hack=None):
         await client.send_message(name,'**Alert!**\n``You may have been hacked. {}-virus.exe has been found in your system\'s operating system.\nYour data may have been compromised. Please re-install your OS immediately.``'.format(hack))
 	
 		
+@client.command(pass_context = True)
+async def avatar(ctx, user: discord.Member=None):
+    if user is None:
+        embed = discord.Embed(title=f'Avatar', description="Here's your avatar that you've requested...\n Don't misuse this cmd...", color=0Xf9fcfc)
+        embed.add_field(name='User: {}'.format(ctx.message.author.name), value='Avatar:', inline=True)
+        embed.set_thumbnail(url='https://cdn.discordapp.com/attachments/532088532576239647/536173122257420360/dab.webp') 
+        embed.set_image(url = ctx.message.author.avatar_url)
+        embed.set_footer(text=f"Requested by {ctx.message.author.name}", icon_url=f'{ctx.message.author.avatar_url}')
+        embed.timestamp = datetime.datetime.utcnow()
+        await client.say(embed=embed)
+    else:
+        embed = discord.Embed(title=f'Avatar', description="Here's your avatar that you've requested...\n Don't misuse this cmd...", color=0Xf9fcfc)
+        embed.add_field(name='User: {}'.format(user.name), value='Avatar:', inline=True)
+        embed.set_thumbnail(url='https://cdn.discordapp.com/attachments/532088532576239647/536173122257420360/dab.webp') 
+        embed.set_footer(text=f"Requested by {ctx.message.author.name}", icon_url=f"{ctx.message.author.avatar_url}")
+        embed.timestamp = datetime.datetime.utcnow()
+        embed.set_image(url = user.avatar_url)
+        await client.say(embed=embed)
+
 		
 		
 @client.command(pass_context=True)
@@ -159,8 +174,6 @@ async def lovedetect(ctx, user: discord.Member = None, *, user2: discord.Member 
             await client.say(embed=embed)	
 	
 	
-
-
  	
 @client.command(pass_context = True)
 @commands.has_permissions(administrator=True) 
