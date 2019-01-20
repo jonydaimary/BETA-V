@@ -757,6 +757,7 @@ async def help(ctx):
     embed = discord.Embed(color=0XFF69B4)
     embed.set_author(name=" Command Prefix: !! ")
     embed.add_field(name='`avatar <user>`', value='-Avatar of mentioned user ', inline=True)
+    embed.set_thumbnail(url='https://cdn.discordapp.com/attachments/532088532576239647/536173122257420360/dab.webp') 
     embed.set_footer(text=f"Requested by {ctx.message.author.name}", icon_url=f"{ctx.message.author.avatar_url}")
     embed.timestamp = datetime.datetime.utcnow()
     await client.say(embed=embed)
