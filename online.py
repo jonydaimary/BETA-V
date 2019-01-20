@@ -368,7 +368,7 @@ async def userinfo(ctx, user: discord.Member):
 @commands.has_permissions(manage_nicknames=True)     
 async def setnick(ctx, user: discord.Member=None, *, nickname=None):
     if user is None:
-      await client.say('Please tag a person to change nickname. Example- ``!!setnick @user <new nickname>``')
+      await client.say('The proper usage is \n`!!setnick @user <new nickname`')
       return
     else:
       await client.change_nickname(user, nickname)
