@@ -162,43 +162,9 @@ async def lovedetect(ctx, user: discord.Member = None, *, user2: discord.Member 
             await client.say(embed=embed)	
 	
 	
-	
-@client.command(pass_context=True, aliases=['em', 'e'])
-async def modmail(ctx, *, msg=None):
-    channel = discord.utils.get(client.get_all_channels(), name='📬mod-mails📬')
-    r, g, b = tuple(int(x * 255) for x in colorsys.hsv_to_rgb(random.random(), 1, 1))
-    color = discord.Color((r << 16) + (g << 8) + b)
-    if not msg:
-        await client.say("Please specify a message to send")
-    else:
-        await client.send_message(channel, embed=discord.Embed(color=color, description=msg + '\n Message From-' + ctx.message.author.id))
-        await client.delete_message(ctx.message)
-    return
 
 
-
-@client.command(pass_context=True)
-async def skincolor(ctx, user: discord.Member):
-    r, g, b = tuple(int(x * 255) for x in colorsys.hsv_to_rgb(random.random(), 1, 1))
-    random.seed(user.id)
-    skins = ["White", "Black", "Blue", "Green", "Rainbow", "Purple", "Brown", "Pink", "Cream", "Orange"]
-    if user == ctx.message.author:
-        embed2 = discord.Embed(title="You should know your own skin color", color = discord.Color((r << 16) + (g << 8) + b))
-        await client.say(embed=embed2)
-    else:
-        embed = discord.Embed(color=0xcb287a)
-        embed.add_field(name=f"{user.name}'s skin color", value=random.choice(skins))
-        await client.say(embed=embed)
-	
-
- 
-	
-@client.command(pass_context=True)
-@commands.check(is_soyal)
-async def botdm(ctx, user: discord.Member, *, msg: str):
-    await client.send_typing(user)
-    await client.send_message(user, msg)
-	
+ 	
 @client.command(pass_context = True)
 @commands.has_permissions(administrator=True) 
 async def announce(ctx, channel: discord.Channel=None, *, msg: str):
@@ -256,6 +222,7 @@ async def test(ctx):
     else:
       await client.send_message(ctx.message.author, 'Hii bro what supp')
       await client.say('Check your dm ')
+	
 
 @client.command(pass_context=True)  
 @commands.has_permissions(administrator=True)    
@@ -275,34 +242,6 @@ async def kick(ctx,user:discord.member):
 
 	
 	
-
-        
-
-@client.command(pass_context = True)
-async def happybirthday(ctx, *, msg = None):
-    if '@here' in msg or '@everyone' in msg:
-      return
-    if not msg: await client.say("Please specify a user to wish")
-    await client.say('Happy birthday have a nice day' + msg + ' http://imgur.com/gallery/PbyNCR2')
-    await client.say(embed=embed)	
-    return
-
-
-
-@client.command(pass_context = True)
-@commands.has_permissions(administrator=True)
-async def emojiids(ctx):
-  for emoji in ctx.message.author.server.emojis:
-    print(f"<:{emoji.name}:{emoji.id}>")
-    print(" ")    
-
-	
-
-
-
-
-
-
 
 @client.command(pass_context = True)
 @commands.has_permissions(administrator=True)
@@ -364,10 +303,7 @@ async def rolesetup(ctx):
 
     await client.create_role(author.server, name="Owner", permissions=admin_perms)
     await client.create_role(author.server, name="Admin", permissions=admin_perms)
-    await client.create_role(author.server, name="Senior Moderator", permissions=mod_perms)
-    await client.create_role(author.server, name="G.O.H")
     await client.create_role(author.server, name="Moderator", permissions=mod_perms)
-    await client.create_role(author.server, name="Muted")
     await client.create_role(author.server, name="Friend of Owner")
 
 
@@ -384,11 +320,12 @@ async def role(ctx, user: discord.Member, *, role: discord.Role = None):
             await client.remove_roles(user, role)
             return await client.say("{} role has been removed from {}.".format(role, user))
  
+
 @client.command(pass_context = True)
 @commands.has_permissions(kick_members=True)
 async def warn(ctx, userName: discord.User, *, message:str): 
-    await client.send_message(userName, "You have been warned for: **{}**".format(message))
-    await client.say(":warning: __**{0} Has Been Warned!**__ :warning: ** Reason:{1}** ".format(userName,message))
+    await client.send_message(userName, "You have been warned for: *{}*".format(message))
+    await client.say(":angry:  __*{0} Has Been Warned!*__ :warning: * Reason:{1}* ".format(userName,message))
     pass
 
 
@@ -401,6 +338,7 @@ async def say(ctx, *, msg = None):
     else: await client.say(msg)
     return
 
+
 @client.command(pass_context=True)
 @commands.has_permissions(administrator=True)
 async def friend(ctx, user:discord.Member,):
@@ -408,21 +346,6 @@ async def friend(ctx, user:discord.Member,):
     role = discord.utils.get(ctx.message.server.roles, name='Friend of Owner')
     await client.add_roles(ctx.message.mentions[0], role)
 
-
-
-@client.command(pass_context=True)  
-@commands.has_permissions(kick_members=True)
-async def getuser(ctx, role: discord.Role = None):
-    if role is None:
-        await client.say('There is no "STAFF" role on this server!')
-        return
-    empty = True
-    for member in ctx.message.server.members:
-        if role in member.roles:
-            await client.say("{0.name}: {0.id}".format(member))
-            empty = False
-    if empty:
-        await client.say("Nobody has the role {}".format(role.mention))
 
 
 @client.command(pass_context = True)
@@ -443,25 +366,6 @@ async def userinfo(ctx, user: discord.Member):
       embed.set_image(url = user.avatar_url)
       await client.say(embed=embed)
 
-
-
-
-@client.command(pass_context = True)
-@commands.has_permissions(kick_members=True) 
-@commands.cooldown(rate=5,per=86400,type=BucketType.user) 
-async def access(ctx, member: discord.Member):
-    if ctx.message.author.bot:
-      return
-    else:
-      role = discord.utils.get(member.server.roles, name='access')
-      await client.add_roles(member, role)
-      await client.say("Gave access to {}".format(member))
-      for channel in member.server.channels:
-        if channel.name == 'soyal-log':
-            embed=discord.Embed(title="User Got Access!", description="**{0}** got access from **{1}**!".format(member, ctx.message.author), color=0x020202)
-            await client.send_message(channel, embed=embed)
-            await asyncio.sleep(45*60)
-            await client.remove_roles(member, role)
 
 
 @client.command(pass_context = True)
@@ -554,8 +458,7 @@ async def serverinfo(ctx):
     roles = ', '.join(roles);
     channelz = len(server.channels);
     time = str(server.created_at); time = time.split(' '); time= time[0];
-    r, g, b = tuple(int(x * 255) for x in colorsys.hsv_to_rgb(random.random(), 1, 1))
-    join = discord.Embed(description= '%s '%(str(server)),title = 'Server Name', color = discord.Color((r << 16) + (g << 8) + b));
+    join = discord.Embed(description= '%s '%(str(server)),title = 'Server Name', color=0XFF69B4)
     join.set_thumbnail(url = server.icon_url);
     join.add_field(name = '__Owner__', value = str(server.owner) + '\n' + server.owner.id);
     join.add_field(name = '__ID__', value = str(server.id))
