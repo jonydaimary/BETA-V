@@ -42,10 +42,7 @@ async def on_ready():
     client.loop.create_task(status_task())
 	
 def is_owner(ctx):
-    return ctx.message.author.id == "498378677512437762" #replace_it_with_your_discord_id
-	
-def is_soyal(ctx):
-    return ctx.message.author.id == "498378677512437762" 		
+    return ctx.message.author.id == "498378677512437762"	
 		
 
 
