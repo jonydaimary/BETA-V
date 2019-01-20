@@ -530,7 +530,7 @@ async def lovedetect(ctx, user: discord.Member = None, *, user2: discord.Member 
     async with aiohttp.ClientSession() as cs:
         async with cs.get(url) as r:
             res = await r.json()       
-            embed = discord.Embed(title=f"{shipuser1} ❤ {shipuser2} Love each others", description=f"Love\n`{counter_}` Score:**{score}% **\nLoveName:**{finalName}**", color=0XFF69B4)
+            embed = discord.Embed(title=f"{shipuser1} ❤ {shipuser2} Love each others", description=f"Love\n`{counter_}` Score:**{score}% **\nLoveName:**{finalName}**", color=0Xf9fcfc)
             embed.set_image(url=res['message'])
             embed.set_footer(text=f"Requested by {ctx.message.author.name}", icon_url=f"{ctx.message.author.avatar_url}")
             embed.timestamp = datetime.datetime.utcnow()
