@@ -349,6 +349,7 @@ async def friend(ctx, user:discord.Member,):
 @commands.has_permissions(kick_members=True)     
 async def userinfo(ctx, user: discord.Member):
     if ctx.message.author.bot:
+      await client.say('```The proper usage is \n!!userinfo <@user>```')
       return
     else:
       embed = discord.Embed(title="{}'s info".format(user.name), description="Here's what I could find.", color=0XFF69B4)
