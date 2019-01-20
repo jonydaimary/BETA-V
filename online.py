@@ -325,7 +325,7 @@ async def role(ctx, user: discord.Member, *, role: discord.Role = None):
 @commands.has_permissions(kick_members=True)
 async def warn(ctx, userName: discord.User, *, message:str): 
     await client.send_message(userName, "You have been warned for: *{}*".format(message))
-    await client.say(":angry:  __*{0} Has Been Warned!*__ :warning: * Reason:{1}* ".format(userName,message))
+    await client.say(":angry:  __*{0} Has Been Warned!*__ :warning: *Reason:{1}* ".format(userName,message))
     pass
 
 
