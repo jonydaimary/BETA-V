@@ -629,12 +629,11 @@ async def slap(ctx, user: discord.Member = None):
 
 @client.command(pass_context=True)
 async def kiss(ctx, user: discord.Member):
-    r, g, b = tuple(int(x * 255) for x in colorsys.hsv_to_rgb(random.random(), 1, 1))
     randomurl = ["https://media3.giphy.com/media/G3va31oEEnIkM/giphy.gif", "https://i.imgur.com/eisk88U.gif", "https://media1.tenor.com/images/e4fcb11bc3f6585ecc70276cc325aa1c/tenor.gif?itemid=7386341", "http://25.media.tumblr.com/6a0377e5cab1c8695f8f115b756187a8/tumblr_msbc5kC6uD1s9g6xgo1_500.gif"]
     if user.id == ctx.message.author.id:
         await client.say("Goodluck kissing yourself {}".format(ctx.message.author.mention))
     else:
-        embed = discord.Embed(title=f"{user.name} You just got a kiss from {ctx.message.author.name}", color = discord.Color((r << 16) + (g << 8) + b))
+        embed = discord.Embed(title=f"{user.name} You just got a kiss from {ctx.message.author.name}", color=0Xf9fcfc)
         embed.set_image(url=random.choice(randomurl))
         await client.say(embed=embed)
 
@@ -707,8 +706,7 @@ async def burned(ctx):
 @client.command(pass_context=True)
 async def savage(ctx):
     r, g, b = tuple(int(x * 255) for x in colorsys.hsv_to_rgb(random.random(), 1, 1))
-    gifs = ["https://media.giphy.com/media/s7eezS6vxhACk/giphy.gif", "https://m.popkey.co/5bd499/gK00J_s-200x150.gif",
-            "https://i.imgur.com/XILk4Xv.gif"]
+    gifs = ["https://media.giphy.com/media/s7eezS6vxhACk/giphy.gif", "https://i.imgur.com/XILk4Xv.gif"]
     embed = discord.Embed(color = discord.Color((r << 16) + (g << 8) + b))
     embed.set_image(url=random.choice(gifs))
     await client.say(embed=embed)
