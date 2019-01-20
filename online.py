@@ -519,7 +519,7 @@ async def on_message_delete(message):
 @client.command(pass_context = True)
 async def avatar(ctx, user: discord.Member=None):
     if user is None:
-        embed = discord.Embed(title=f'Avatar', description="Here's your avatar that you've requested...\n Don't misuse this cmd...", color=0XFF69B4)
+        embed = discord.Embed(title=f'Avatar', description="Here's your avatar that you've requested...\n Don't misuse this cmd...", color=0Xf9fcfc)
         embed.add_field(name='User: {}'.format(ctx.message.author.name), value='Avatar:', inline=True)
         embed.set_thumbnail(url='https://cdn.discordapp.com/attachments/532088532576239647/536173122257420360/dab.webp') 
         embed.set_image(url = ctx.message.author.avatar_url)
@@ -527,7 +527,7 @@ async def avatar(ctx, user: discord.Member=None):
         embed.timestamp = datetime.datetime.utcnow()
         await client.say(embed=embed)
     else:
-        embed = discord.Embed(title=f'Avatar', description="Here's your avatar that you've requested...\n Don't misuse this cmd...", color=0XFF69B4)
+        embed = discord.Embed(title=f'Avatar', description="Here's your avatar that you've requested...\n Don't misuse this cmd...", color=0Xf9fcfc)
         embed.add_field(name='User: {}'.format(user.name), value='Avatar:', inline=True)
         embed.set_thumbnail(url='https://cdn.discordapp.com/attachments/532088532576239647/536173122257420360/dab.webp') 
         embed.set_footer(text=f"Requested by {ctx.message.author.name}", icon_url=f"{ctx.message.author.avatar_url}")
@@ -567,7 +567,7 @@ async def lovedetect2(ctx, user: discord.Member = None, *, user2: discord.Member
 	
 @client.command(pass_context=True)
 async def ownerinfo(ctx):
-    embed = discord.Embed(title="Information about owner", description="bot name- @DAB#1253 ", color=0x00ff00)
+    embed = discord.Embed(title="Information about owner", description="bot name- @DAB#1253 ", color=0xf9fcfc)
     embed.set_author(name=" bot owner name- @marcos.#0290 ")
     embed.set_footer(text=f"Requested by {ctx.message.author.name}", icon_url=f"{ctx.message.author.avatar_url}")
     embed.timestamp = datetime.datetime.utcnow()
@@ -598,13 +598,13 @@ async def on_member_join(member):
 @client.command(pass_context=True)
 async def merrychristmas(ctx, user:discord.Member=None):
     if user is None:
-        embed=discord.Embed(title='merry christmas', description=f'I wanna wish {ctx.message.author} Merry Christmas {ctx.message.author}', color=0XFF69B4)
+        embed=discord.Embed(title='merry christmas', description=f'I wanna wish {ctx.message.author} Merry Christmas {ctx.message.author}', color=0Xf9fcfc)
         embed.set_image(url = 'https://cdn.discordapp.com/attachments/532088532576239647/536425202335219722/tenor.gifw.gif')
         embed.set_footer(text=f"Requested by {ctx.message.author.name}", icon_url=f"{ctx.message.author.avatar_url}")
         embed.timestamp = datetime.datetime.utcnow()
         await client.say(embed=embed)
     else:
-        embed=discord.Embed(title='Merry Christmas', description=f'I wanna wish {user} Merry Christmas {user}', color=0XFF69B4)
+        embed=discord.Embed(title='Merry Christmas', description=f'I wanna wish {user} Merry Christmas {user}', color=0Xf9fcfc)
         embed.set_image(url = 'https://cdn.discordapp.com/attachments/532088532576239647/536425202335219722/tenor.gifw.gif')
         embed.set_footer(text=f"Requested by {ctx.message.author.name}", icon_url=f"{ctx.message.author.avatar_url}")
         embed.timestamp = datetime.datetime.utcnow()
@@ -617,8 +617,10 @@ async def slap(ctx, user: discord.Member = None):
     if user == None:
         await client.say(f"{ctx.message.author.mention} ```Proper usage is\n\n>slap <mention a user>```")
     else:
-        embed = discord.Embed(title=f"{ctx.message.author.name} Just slapped the shit out of {user.name}!", color=0XFF69B4)
+        embed = discord.Embed(title=f"{ctx.message.author.name} Just slapped the shit out of {user.name}!", color=0Xf9fcfc)
         embed.set_image(url=random.choice(gifs))
+	embed.set_footer(text=f"Requested by {ctx.message.author.name}", icon_url=f"{ctx.message.author.avatar_url}")
+        embed.timestamp = datetime.datetime.utcnow()
         await client.say(embed=embed)
 	
 	
@@ -629,7 +631,7 @@ async def help(ctx):
     return
    else:
     author = ctx.message.author
-    embed = discord.Embed(title="__Command Prefix:__ !! ", color=0XFF69B4)
+    embed = discord.Embed(title="__Command Prefix:__ !! ", color=0Xf9fcfc)
     embed.add_field(name="__**Commands**__", value="`avatar <user>` -  Avatar of mentioned user. \n`meme` - This will show a meme image. \n`slap <user>` - This will slap the user. ")
     embed.set_thumbnail(url='https://cdn.discordapp.com/attachments/532088532576239647/536173122257420360/dab.webp') 
     embed.set_footer(text=f"Requested by {ctx.message.author.name}", icon_url=f"{ctx.message.author.avatar_url}")
