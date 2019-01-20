@@ -755,7 +755,7 @@ async def help(ctx):
    else:
     author = ctx.message.author
     embed = discord.Embed(title="__Command Prefix:__ !! ", color=0XFF69B4)
-    embed.add_field(name='`avatar` - Avatar of the user ', value=' ' , inline=True)
+    embed.add_field(name='`avatar` - Avatar of the user ', description="", value='' , inline=True)
     embed.set_thumbnail(url='https://cdn.discordapp.com/attachments/532088532576239647/536173122257420360/dab.webp') 
     embed.set_footer(text=f"Requested by {ctx.message.author.name}", icon_url=f"{ctx.message.author.avatar_url}")
     embed.timestamp = datetime.datetime.utcnow()
@@ -765,7 +765,7 @@ async def help(ctx):
 @client.command(pass_context=True)
 async def merrychristmas(ctx, user:discord.Member=None):
     if user is None:
-        embed=discord.Embed(title='Merry Christmas', description=f'I wanna wish {ctx.message.author} Merry Christmas {ctx.message.author}', color=0XFF69B4)
+        embed=discord.Embed(title='merry christmas', description=f'I wanna wish {ctx.message.author} Merry Christmas {ctx.message.author}', color=0XFF69B4)
         embed.set_image(url = 'https://cdn.discordapp.com/attachments/486489391083159574/526968559994404874/gif-153062737.gif')
         embed.set_footer(text=f"Requested by {ctx.message.author.name}", icon_url=f"{ctx.message.author.avatar_url}")
         embed.timestamp = datetime.datetime.utcnow()
