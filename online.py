@@ -753,6 +753,8 @@ async def help(ctx):
    if ctx.message.author.bot:
     return
    else:
+    author = ctx.message.author
+    embed = discord.Embed(color=0XFF69B4)
     embed.set_author(name=" __Command Prefix__: !! ")
     embed.add_field(name='avatar <user>', value='-Avatar of mentioned user ', inline=True)
     embed.set_footer(text=f"Requested by {ctx.message.author.name}", icon_url=f"{ctx.message.author.avatar_url}")
