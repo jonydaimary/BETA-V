@@ -174,33 +174,7 @@ async def modmail(ctx, *, msg=None):
         await client.send_message(channel, embed=discord.Embed(color=color, description=msg + '\n Message From-' + ctx.message.author.id))
         await client.delete_message(ctx.message)
     return
-	
-@client.command()
-async def servers():
-  servers = list(client.servers)
-  await client.say(f"Connected on {str(len(servers))} servers:")
-  await client.say('\n'.join(server.name for server in servers))
 
-@client.command(pass_context = True)
-async def ping(ctx):
-    channel = ctx.message.channel
-    t1 = time.perf_counter()
-    await client.send_typing(channel)
-    t2 = time.perf_counter()
-    await client.say("Ping: {}ms".format(round((t2-t1)*1000)))
-
-
-@client.command(pass_context=True)
-async def google(ctx, *, message):
-    new_message = message.replace(" ", "+")
-    url = f"https://www.google.com/search?q={new_message}"
-    await client.say(url)
-
-@client.command(pass_context=True)
-async def youtube(ctx, *, message: str):
-    new_message = message.replace(" ", "+")
-    url = f"https://www.youtube.com/results?search_query={new_message}"
-    await client.say(url)
 
 
 @client.command(pass_context=True)
@@ -216,22 +190,7 @@ async def skincolor(ctx, user: discord.Member):
         embed.add_field(name=f"{user.name}'s skin color", value=random.choice(skins))
         await client.say(embed=embed)
 	
-	
-@client.command(pass_context=True)
-async def unverify(ctx):
-    await client.delete_message(ctx.message)
-    role = discord.utils.get(ctx.message.server.roles, name='Unverified')
-    await client.add_roles(ctx.message.author, role)
-    
-@client.command(pass_context=True)
-async def verify(ctx):
-    if ctx.message.author.bot:
-      return
-    else:
-      await client.delete_message(ctx.message)
-      role = discord.utils.get(ctx.message.server.roles, name='Verified')
-      await client.add_roles(ctx.message.author, role)	
-	
+
  
 	
 @client.command(pass_context=True)
