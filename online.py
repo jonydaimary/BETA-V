@@ -645,9 +645,10 @@ async def clear(ctx, number):
         return         
    
  
-    await client.delete_messages(mgs)      
+    await client.delete_messages(mgs)  
+	
 
- 
+	
 @client.event
 async def on_message_delete(message):
     if not message.author.bot:
@@ -659,13 +660,16 @@ async def on_message_delete(message):
       for channel in user.server.channels:
         if channel.name == 'information-log':
           logchannel = channel
-          r, g, b = tuple(int(x * 255) for x in colorsys.hsv_to_rgb(random.random(), 1, 1))
-          embed = discord.Embed(color = discord.Color((r << 16) + (g << 8) + b))
+          embed = discord.Embed(color=0XFF69B4)
           embed.set_author(name='Message deleted')
           embed.add_field(name = 'User: **{0}**'.format(user.name),value ='UserID: **{}**'.format(user.id),inline = False)
           embed.add_field(name = 'Message:',value ='{}'.format(message.content),inline = False)
           embed.add_field(name = 'Channel:',value ='{}'.format(message.channel.name),inline = False)
+          embed.set_footer(text=f"Requested by {ctx.message.author.name}", icon_url=f"{ctx.message.author.avatar_url}")
+          embed.timestamp = datetime.datetime.utcnow()
           await client.send_message(logchannel,  embed=embed)	
+		
+
 		
 
 @client.command(pass_context = True)
