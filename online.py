@@ -747,6 +747,15 @@ async def on_member_join(member):
     embed.set_thumbnail(url=member.avatar_url)
     await client.send_message(channel, embed=embed)		
 
-
+	
+@client.command(pass_context=True)
+async def help(ctx):
+    embed.set_author(name=" __Command Prefix__: !! ")
+    embed.add_field(name='avatar <user>', value='-Avatar of mentioned user ', inline=True)
+    embed.set_footer(text=f"Requested by {ctx.message.author.name}", icon_url=f"{ctx.message.author.avatar_url}")
+    embed.timestamp = datetime.datetime.utcnow()
+    await client.say(embed=embed)
+ 
+	
 
 client.run(os.getenv('Token')) 
