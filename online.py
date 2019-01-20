@@ -630,8 +630,7 @@ async def help(ctx):
    else:
     author = ctx.message.author
     embed = discord.Embed(title="__Command Prefix:__ !! ", color=0XFF69B4)
-    embed.add_field(name="`avatar <user>` ", value ="- Avatar of mentioned user." , inline=True)
-    embed.add_field(name="`meme` ", value ="- This will show a meme image.." , inline=True)
+    embed.add_field(name="__**Commands**__", value="`meme <user>` -  Avatar of mentioned user. \navatar - This will show a meme image. ")
     embed.set_thumbnail(url='https://cdn.discordapp.com/attachments/532088532576239647/536173122257420360/dab.webp') 
     embed.set_footer(text=f"Requested by {ctx.message.author.name}", icon_url=f"{ctx.message.author.avatar_url}")
     embed.timestamp = datetime.datetime.utcnow()
