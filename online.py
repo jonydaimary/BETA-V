@@ -347,8 +347,8 @@ async def friend(ctx, user:discord.Member,):
 
 @client.command(pass_context = True)
 @commands.has_permissions(kick_members=True)     
-async def userinfo(ctx, user: discord.Member):
-    if ctx.message.author.bot:
+async def userinfo(ctx, user: discord.Member=None):
+    if user is None:
       await client.say('```The proper usage is \n!!userinfo <@user>```')
       return
     else:
