@@ -670,7 +670,7 @@ async def thuglife(ctx):
 	
 	
 @client.command(pass_context=True, no_pm=True, aliases=["Cat"])
-async def catt(ctx):
+async def cat(ctx):
 	await client.send_typing(ctx.message.channel)
 	try:
 		url = "http://shibe.online/api/cats?count=1&urls=true&httpsUrls=false"
@@ -685,11 +685,43 @@ async def catt(ctx):
 		await asyncio.sleep(5)
 		await client.delete_message(x)	
 	
-		
+
+@client.command(pass_context=True, no_pm=True, aliases=["Fox"])
+async def fox(ctx):
+	await client.send_typing(ctx.message.channel)
+	try:
+		url = "https://randomfox.ca/floof"
+		response = requests.get(url)
+		data = json.loads(response.text)
+		embed=discord.Embed(color=0Xf9fcfc)
+		embed.set_author(name =  "Here's Your Fox {}".format(ctx.message.author.name), icon_url = ctx.message.author.avatar_url)
+		embed.set_image(url = data["image"])
+		await client.say(embed=embed)
+	except:
+		x = await client.say("Sorry, there was an error with the **fox** command")
+		await asyncio.sleep(5)
+		await client.delete_message(x)	
+	
+@client.command(pass_context=True, no_pm=True, aliases=["Bird"])
+async def bird(ctx):
+	await client.send_typing(ctx.message.channel)
+	try:
+		url = "http://shibe.online/api/birds?count=1&urls=true&httpsUrls=false"
+		response = requests.get(url)
+		data = json.loads(response.text)
+		embed=discord.Embed(color=0Xf9fcfc)
+		embed.set_author(name =  "Here's Your Bird {}".format(ctx.message.author.name), icon_url = ctx.message.author.avatar_url)
+		embed.set_image(url = data[0])
+		await client.say(embed=embed)
+	except:
+		x = await client.say("Sorry, there was an error with the **bird** command")
+		await asyncio.sleep(5)
+		await client.delete_message(x)	
+	
 
 @client.command(pass_context=True)
 async def help(ctx):
-    embed = discord.Embed(title="__Command Prefix:__ !! ", color=0Xf9fcfc)
+    embed = discord.Embed(title="__Command Prefix:__ !! ", color=0Xf9fcfc))
     embed.add_field(name="__**Bot commands**__", value="`serverinfo` - This will show the server's information (Administrator). \n`poll` - Polling (Administrator). \n`clear<number>` - will clear messages(Administrator). \n\n`lovedetect<@user1><@user2>` - This will show how the users love each other. \n`avatar<user>` -  Avatar of mentioned user. \n`meme` - This will show a meme image. \n`slap<@user>` - This will slap the user. \n`hug<@user>` -  This will hug a user. \n`kiss<@user>` - This will kiss the user. \n`joke` - This will tell you a joke. ", inline=True)
     embed.add_field(name="__**music commands**__", value="`play` - This will play the audio you want. \n`pause` - will pause the audio. \n`resume` - This will resume the audio. \n`skip` - will skip the music. \n`stop` -  will Bot disconnected. \n`song` - To Check The Current playing song. \n\n\n__**more feautures coming soon...**__ ") 
     embed.set_thumbnail(url='https://cdn.discordapp.com/attachments/532088532576239647/536173122257420360/dab.webp') 
