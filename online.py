@@ -389,9 +389,11 @@ async def poll(ctx, question, *options: str):
         react_message = await client.say(embed=embed)
         for reaction in reactions[:len(options)]:
             await client.add_reaction(react_message, reaction)
-        embed.set_footer(text='Poll ID: {ctx.message.poll.id}'.format(react_message.id))
+        embed.set_footer(text=f"Poll ID: {ctx.message.poll.id}".format(react_message.id))
         await client.edit_message(react_message, embed=embed)
+
 	
+
 	
 
 @client.command(pass_context=True)  
