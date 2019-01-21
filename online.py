@@ -640,12 +640,12 @@ async def bird(ctx):
 	
 @client.command(pass_context = True)
 async def serverinvite(ctx):
-    await client.say("*Thanks for joining in our server*.... \nhttps://discord.gg/Dgvq9vK ")
+    await client.say("*Thanks for joining in our server*.... \n https://discord.gg/Dgvq9vK ")
 
 
 @client.command(pass_context = True)
 async def server(ctx):
-    await client.say("*Thanks for joining in our server*.... \nhttps://discord.gg/Dgvq9vk ")
+    await client.say("*Thanks for joining in our server*.... \n https://discord.gg/Dgvq9vK ")
 
 
 @client.command(pass_context=True)
