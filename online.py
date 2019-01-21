@@ -838,7 +838,7 @@ async def inviteb(ctx):
     await client.say(embed=embed)		
 		
 
-@client.command(pass_context=True)
+@client.command(pass_context=True, aliases=["Help"])
 async def help(ctx):
     embed = discord.Embed(title="__Command Prefix:__ !! ", color=0Xf9fcfc)
     embed.add_field(name="__**bot commands**__", value="`serverinfo` - This will show the server's information (Administrator). \n`poll` - Polling (Administrator). \n`clear<number>` - will clear messages(Administrator). \n\n`lovedetect<@user1><@user2>` - This will show how the users love each other. \n`avatar<user>` -  Avatar of mentioned user. \n`meme` - This will show a meme image. \n`slap<@user>` - This will slap the user. \n`hug<@user>` -  This will hug a user. \n`kiss<@user>` - This will kiss the user. \n`joke` - This will tell you a joke. ", inline=True)
