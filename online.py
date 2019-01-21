@@ -455,7 +455,7 @@ async def serverinfo(ctx):
     join.add_field(name = '__Member Count__', value = str(server.member_count));
     join.add_field(name = '__Text/Voice Channels__', value = str(channelz));
     join.add_field(name = '__Roles (%s)__'%str(role_length), value = roles);
-    join.add_field(name = '__Created (%s)__', value = time);
+    join.add_field(name = '__Created (%s)__', value = str(time));
     return await client.say(embed = join);
 
 
