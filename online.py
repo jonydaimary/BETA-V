@@ -48,7 +48,6 @@ def is_owner(ctx):
     return ctx.message.author.id == "498378677512437762"	
 		
 
-
 @client.event
 async def on_message(message):
     channel = client.get_channel('519791076803084288')
@@ -314,8 +313,6 @@ async def kick(ctx,user:discord.member):
             await client.send_message(channel, embed=embed)
 
 
-	
-
 
 @client.command(pass_context = True)
 @commands.has_permissions(administrator=True)
@@ -331,20 +328,7 @@ async def rolesetup(ctx):
     await client.create_role(author.server, name="Friend of Owner")
 
 
-@commands.has_permissions(manage_roles=True)     
-async def role(ctx, user: discord.Member, *, role: discord.Role = None):
-        if role is None:
-            return await client.say("You haven't specified a role! ")
-
-        if role not in user.roles:
-            await client.add_roles(user, role)
-            return await client.say("{} role has been added to {}.".format(role, user))
-
-        if role in user.roles:
-            await client.remove_roles(user, role)
-            return await client.say("{} role has been removed from {}.".format(role, user))
  
-
 @client.command(pass_context = True)
 @commands.has_permissions(kick_members=True)
 async def warn(ctx, userName: discord.User, *, message:str): 
