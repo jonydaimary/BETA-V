@@ -76,7 +76,7 @@ async def tweet(ctx, usernamename:str, *, txt:str):
     async with aiohttp.ClientSession() as cs:
         async with cs.get(url) as r:
             res = await r.json()           
-            embed = discord.Embed(color=0XFF69B4) 
+            embed = discord.Embed(color=0Xf9fcfc) 
             embed.set_image(url=res['message'])  
             embed.title = "{} twitted: {}".format(usernamename, txt)
             embed.set_footer(text=f"Requested by {ctx.message.author.name}", icon_url=f"{ctx.message.author.avatar_url}")	 
@@ -478,7 +478,7 @@ async def on_message_delete(message):
       for channel in user.server.channels:
         if channel.name == 'information-log':
           logchannel = channel
-          embed = discord.Embed(color=0XFF69B4)
+          embed = discord.Embed(color=0Xf9fcfc)
           embed.set_author(name='Message deleted')
           embed.add_field(name = 'User: **{0}**'.format(user.name),value ='UserID: **{}**'.format(user.id),inline = False)
           embed.add_field(name = 'Message:',value ='{}'.format(message.content),inline = False)
