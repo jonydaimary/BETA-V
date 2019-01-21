@@ -623,8 +623,10 @@ async def cat(ctx):
         response = requests.get(url)
         data = json.loads(response.text)
         embed=discord.Embed(color=0Xf9fcfc)
-        embed.set_author(name =  "Here's Your Cat {}".format(ctx.message.author.name), icon_url = ctx.message.author.avatar_url)
+        embed.set_author(name =  "Here's Your Cat {}".format(ctx.message.author.name))
         embed.set_image(url = data[0])
+	embed.set_footer(text=f"Requested by {ctx.message.author.name}", icon_url=f"{ctx.message.author.avatar_url}")
+        embed.timestamp = datetime.datetime.utcnow()
         await client.say(embed=embed)
     except:
         x = await client.say("Sorry, there was an error with the **cat** command")
