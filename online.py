@@ -582,6 +582,9 @@ async def hug(ctx, user: discord.Member = None):
 @client.command(pass_context=True)
 async def kiss(ctx, user: discord.Member):
     randomurl = ["https://media3.giphy.com/media/G3va31oEEnIkM/giphy.gif", "https://i.imgur.com/eisk88U.gif", "https://media1.tenor.com/images/e4fcb11bc3f6585ecc70276cc325aa1c/tenor.gif?itemid=7386341", "http://25.media.tumblr.com/6a0377e5cab1c8695f8f115b756187a8/tumblr_msbc5kC6uD1s9g6xgo1_500.gif"]
+    if user == None:
+        await client.say(f"{ctx.message.author.mention} ```Proper usage is\n\n>slap <mention a user>```")
+	return
     if user.id == ctx.message.author.id:
         await client.say("Goodluck kissing yourself {}".format(ctx.message.author.mention))
     else:
