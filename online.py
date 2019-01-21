@@ -448,7 +448,7 @@ async def serverinfo(ctx):
     roles = ', '.join(roles);
     channelz = len(server.channels);
     time = str(server.created_at); time = time.split(' '); time= time[0];
-    join = discord.Embed(description= '%s '%(str(server)),title = 'Server Name', color=0Xf9fcfc)
+    join = discord.Embed(description= '%s '%(str(server)),title = '__Server Name__', color=0Xf9fcfc)
     join.set_thumbnail(url = server.icon_url);
     join.add_field(name = '__Owner__', value = str(server.owner) + '\n' + server.owner.id);
     join.add_field(name = '__ID__', value = str(server.id))
@@ -456,8 +456,7 @@ async def serverinfo(ctx):
     join.add_field(name = '__Text/Voice Channels__', value = str(channelz));
     join.add_field(name = '__Roles (%s)__'%str(role_length), value = roles);
     join.add_field(name = '__Created__'%str(time), value = time);
-    join.set_footer(text=f"Requested by {ctx.message.author.name}", icon_url=f"{ctx.message.author.avatar_url}")
-    join.timestamp = datetime.datetime.utcnow()
+    join.set_footer(text=f'Requested by {ctx.message.author.name}', icon_url=f'{ctx.message.author.avatar_url}')
     return await client.say(embed = join);
 
 
