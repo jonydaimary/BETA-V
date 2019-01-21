@@ -455,7 +455,8 @@ async def serverinfo(ctx):
     join.add_field(name = '__Member Count__', value = str(server.member_count));
     join.add_field(name = '__Text/Voice Channels__', value = str(channelz));
     join.add_field(name = '__Roles (%s)__'%str(role_length), value = roles);
-    join.add_field(name = '__Created (%s)__', value = str(time));
+    join.add_field(name = '__Created__', value = str(time));
+    embed.set_footer(text=f"Requested by {ctx.message.author.name}", icon_url=f"{ctx.message.author.avatar_url}")
     return await client.say(embed = join);
 
 
