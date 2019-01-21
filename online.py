@@ -638,21 +638,21 @@ async def bird(ctx):
         await client.delete_message(x) 
 	
 	
-@client.command(pass_context=True, no_pm=True, aliases=["Shibe"])
-async def shibe(ctx):
+@client.command(pass_context=True, no_pm=True, aliases=["Dog"])
+async def dog(ctx):
     await client.send_typing(ctx.message.channel)
     try:
         url = "http://shibe.online/api/shibes?count=1&urls=true&httpsUrls=false"
         response = requests.get(url)
         data = json.loads(response.text)
         embed=discord.Embed(color=0Xf9fcfc)
-        embed.set_author(name =  "Here's Your Shibe {}".format(ctx.message.author.name),)
+        embed.set_author(name =  "Here's Your Dog {}".format(ctx.message.author.name),)
         embed.set_image(url = data[0])
         embed.set_footer(text=f"Requested by {ctx.message.author.name}", icon_url=f"{ctx.message.author.avatar_url}")
         embed.timestamp = datetime.datetime.utcnow()
         await client.say(embed=embed)
     except:
-        x = await client.say("Sorry, there was an error with the **shibe** command")
+        x = await client.say("Sorry, there was an error with the **dog** command")
         await asyncio.sleep(5)
         await client.delete_message(x)    
 	
