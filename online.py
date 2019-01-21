@@ -457,6 +457,7 @@ async def serverinfo(ctx):
     join.add_field(name = '__Roles (%s)__'%str(role_length), value = roles);
     join.add_field(name = '__Created__', value = str(time));
     join.set_footer(text=f"Requested by {ctx.message.author.name}", icon_url=f"{ctx.message.author.avatar_url}")
+    join.timestamp = datetime.datetime.utcnow()
     return await client.say(embed = join);
 
 
