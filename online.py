@@ -61,7 +61,7 @@ async def on_message(message):
 	
 @client.command(pass_context = True)
 async def meme(ctx):
-    embed = discord.Embed(title="{ctx.message} meme",Color=0Xf9fcfc)
+    embed = discord.Embed(title="meme",Color=0Xf9fcfc)
     async with aiohttp.ClientSession() as session:
         async with session.get("https://api.reddit.com/r/me_irl/random") as r:
             data = await r.json()          
