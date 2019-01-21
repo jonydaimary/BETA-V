@@ -15,18 +15,8 @@ import json
 import aiohttp		
 
 
-Forbidden= discord.Embed(title="Permission Denied", description="1) Please check whether you have permission to perform this action or not. \n2) Please check whether my role has permission to perform this action in this channel or not. \n3) Please check my role position.", color=0x00ff00)
+Forbidden= discord.Embed(title="Permission Denied", color=0Xf9fcfc)
 client = commands.Bot(description="DAB Official Bot", command_prefix=commands.when_mentioned_or("!!"), pm_help = True)
-reddit = praw.Reddit(client_id='G-SK66FZT8at9g',
-                     client_secret='DLqIkkdoD0K8xKpxuaMAhRscrS0',
-                     user_agent='android:com.G-SK66FZT8at9g.SolarBot:v1.2.3 (by /u/LaidDownRepaer)')
-
-CLIENT_ID = "1fd3ef04daf8cab"
-CLIENT_SECRET = "f963e574e8e3c17993c933af4f0522e1dc01e230"
-imgur = ImgurClient(CLIENT_ID,CLIENT_SECRET)
-
-GIPHY_API_KEY = "dc6zaTOxFJmzC"
-
 
 
 client.remove_command('help')
