@@ -457,33 +457,10 @@ async def serverinfo(ctx):
     return await client.say(embed = join);
 
 
-
-
-
 @client.command(pass_context = True)
-@commands.has_permissions(manage_messages=True)  
-async def clear(ctx, number):
- 
-    if ctx.message.author.server_permissions.manage_messages:
-         mgs = [] #Empty list to put all the messages in the log
-         number = int(number) #Converting the amount of messages to delete to an integer
-    async for x in client.logs_from(ctx.message.channel, limit = number+1):
-        mgs.append(x)            
-       
-    try:
-        await client.delete_messages(mgs)          
-        await client.say(str(number)+' messages deleted')
-     
-    except discord.Forbidden:
-        await client.say(embed=Forbidden)
-        return
-    except discord.HTTPException:
-        await client.say('clear failed.')
-        return         
-   
- 
-    await client.delete_messages(mgs)  
-	
+@commands.has_permissions(manage_messages = True)
+async def clear(ctx, number: int):
+  purge = await client.purge_from(ctx.message.channel, limit = number+1)	
 
 	
 @client.event
@@ -505,10 +482,7 @@ async def on_message_delete(message):
           await client.send_message(logchannel,  embed=embed)	
 		
 
-		
-
-
-	
+			
 
 @client.command(pass_context=True)
 async def lovedetect(ctx, user: discord.Member = None, *, user2: discord.Member = None):
@@ -692,10 +666,6 @@ async def thuglife(ctx):
 	
 	
 	
-@client.command(pass_context = True)
-@commands.has_permissions(manage_messages = True)
-async def clear2(ctx, number: int):
-  purge = await client.purge_from(ctx.message.channel, limit = number+1)	
 	
 		
 
