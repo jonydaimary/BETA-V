@@ -670,7 +670,7 @@ async def thuglife(ctx):
 	
 	
 @client.command(pass_context=True, no_pm=True, aliases=["Cat"])
-async def cat(ctx):
+async def catt(ctx):
 	await client.send_typing(ctx.message.channel)
 	try:
 		url = "http://shibe.online/api/cats?count=1&urls=true&httpsUrls=false"
