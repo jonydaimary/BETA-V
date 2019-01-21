@@ -150,7 +150,7 @@ async def setupwelcome(ctx):
 	
 @client.command(pass_context = True)
 async def meme(ctx):
-    embed = discord.Embed(title="meme", Color=0Xf9fcfc)
+    embed = discord.Embed(title="meme", color=0X00F9FC)
     async with aiohttp.ClientSession() as session:
         async with session.get("https://api.reddit.com/r/me_irl/random") as r:
             data = await r.json()          
