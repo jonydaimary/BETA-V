@@ -463,9 +463,7 @@ async def serverinfo(ctx):
 
 @client.command(pass_context = True)
 @commands.has_permissions(manage_messages = True)
-async def clear(ctx, number: int.mamber=none):
-  if user == None:
-        await client.say(f"{ctx.message.author.mention} ```Proper usage is\n\n>slap <mention a user>```")
+async def clear(ctx, number: int):
   purge = await client.purge_from(ctx.message.channel, limit = number+1)	
 
 	
