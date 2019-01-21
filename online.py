@@ -639,7 +639,7 @@ async def bird(ctx):
 	
 	
 @client.command(pass_context = True)
-async def serverinvite(msg = None):
+async def serverinvite(ctx):
     await client.say("https://discord.gg/Dgvq9vK")
 
 
