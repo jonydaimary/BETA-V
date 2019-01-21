@@ -390,7 +390,7 @@ async def poll(ctx, question, *options: str):
         react_message = await client.say(embed=embed)
         for reaction in reactions[:len(options)]:
             await client.add_reaction(react_message, reaction)
-        embed.set_footer(text=f"Poll ID: {react_message.id}", icon_url=f"{ctx.message.author.avatar_url}")
+        embed.set_footer(text=f"Poll ID: {react_message.id}",)
         embed.timestamp = datetime.datetime.utcnow()
         await client.edit_message(react_message, embed=embed)
 
