@@ -448,14 +448,14 @@ async def serverinfo(ctx):
     roles = ', '.join(roles);
     channelz = len(server.channels);
     time = str(server.created_at); time = time.split(' '); time= time[0];
-    join = discord.Embed(description= '%s '%(str(server)),title = 'Server Name', color=0XFF69B4)
+    join = discord.Embed(description= '%s '%(str(server)),title = 'Server Name', color=0Xf9fcfc)
     join.set_thumbnail(url = server.icon_url);
     join.add_field(name = '__Owner__', value = str(server.owner) + '\n' + server.owner.id);
     join.add_field(name = '__ID__', value = str(server.id))
     join.add_field(name = '__Member Count__', value = str(server.member_count));
     join.add_field(name = '__Text/Voice Channels__', value = str(channelz));
     join.add_field(name = '__Roles (%s)__'%str(role_length), value = roles);
-    join.set_footer(text ='Created: %s'%time);
+    join.add_field(name = '__Created (%s)__'%str(time), value = time);
     return await client.say(embed = join);
 
 
