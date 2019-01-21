@@ -652,7 +652,7 @@ async def server(ctx):
 async def invites(ctx, user:discord.Member=None):
     r, g, b = tuple(int(x * 255) for x in colorsys.hsv_to_rgb(random.random(), 1, 1))
     if ctx.message.server.id == '519935085739507722':
-        await client.say('You should use ``mv!checkinvites``')
+        await client.say('You should use ``!!checkinvites``')
         return
     if user is None:
         total_uses=0
@@ -681,6 +681,98 @@ async def invites(ctx, user:discord.Member=None):
         embed.add_field(name='__Total Uses__',value=total_uses)
         await client.say(embed=embed)
 
+	
+	
+@client.command(pass_context=True)
+async def checkinvites(ctx, user:discord.Member=None):
+    if ctx.message.server.id == '519935085739507722':
+        r, g, b = tuple(int(x * 255) for x in colorsys.hsv_to_rgb(random.random(), 1, 1))
+        if user is None:
+            total_uses=0
+            embed=discord.Embed(title='__Invites from {}__'.format(ctx.message.author.name), color = discord.Color((r << 16) + (g << 8) + b))
+            invites = await client.invites_from(ctx.message.server)
+            for invite in invites:
+              if invite.inviter == ctx.message.author:
+                  total_uses += invite.uses
+                  embed.add_field(name='Invite',value=invite.id)
+                  embed.add_field(name='Uses',value=invite.uses)
+                  embed.add_field(name='Channel',value=invite.channel)
+                  embed.set_footer(text=f'Requested by: {ctx.message.author.display_name}', icon_url=f'{ctx.message.author.avatar_url}')
+            embed.add_field(name='__Total Uses__',value=total_uses)
+            await client.say(embed=embed)
+            if total_uses >= 20:
+                role = discord.utils.get(ctx.message.server.roles, name='Inviter I')
+                if role in ctx.message.author.roles:
+                    return
+                else:
+                    await client.add_roles(ctx.message.author, role)
+                    await client.say('Congrats! You have got Inviter I role')
+            if total_uses >= 30:
+                role = discord.utils.get(ctx.message.server.roles, name='Inviter II')
+                if role in ctx.message.author.roles:
+                    return
+                else:
+                    await client.add_roles(ctx.message.author, role)
+                    await client.say('Congrats! You have got Inviter II role')
+            if total_uses >= 50:
+                role = discord.utils.get(ctx.message.server.roles, name='Inviter III')
+                if role in ctx.message.author.roles:
+                    return
+                else:
+                    await client.add_roles(ctx.message.author, role)
+                    await client.say('Congrats! You have got Inviter III role')
+            if total_uses >= 80:
+                role = discord.utils.get(ctx.message.server.roles, name='Inviter IV')
+                if role in ctx.message.author.roles:
+                    return
+                else:
+                    await client.add_roles(ctx.message.author, role)
+                    await client.say('Congrats! You have got Inviter IV role')
+        else:
+            total_uses=0
+            embed=discord.Embed(title='__Invites from {}__'.format(user.name), color = discord.Color((r << 16) + (g << 8) + b))
+            invites = await client.invites_from(ctx.message.server)
+            for invite in invites:
+              if invite.inviter == user:
+                  total_uses += invite.uses
+                  embed.add_field(name='Invite',value=invite.id)
+                  embed.add_field(name='Uses',value=invite.uses)
+                  embed.add_field(name='Channel',value=invite.channel)
+                  embed.set_footer(text=f'Requested by: {ctx.message.author.display_name}', icon_url=f'{ctx.message.author.avatar_url}')
+            embed.add_field(name='__Total Uses__',value=total_uses)
+            await client.say(embed=embed)
+            if total_uses >= 20:
+                role = discord.utils.get(user.server.roles, name='Inviter I')
+                if role in user.roles:
+                    return
+                else:
+                    await client.add_roles(user, role)
+                    await client.say(f'Congrats! {user.name}, You have got Inviter I role')
+            if total_uses >= 30:
+                role = discord.utils.get(user.server.roles, name='Inviter II')
+                if role in user.roles:
+                    return
+                else:
+                    await client.add_roles(user, role)
+                    await client.say(f'Congrats! {user.name} You have got Inviter II role')
+            if total_uses >= 50:
+                role = discord.utils.get(user.server.roles, name='Inviter III')
+                if role in user.roles:
+                    return
+                else:
+                    await client.add_roles(user, role)
+                    await client.say(f'Congrats! {user.name} You have got Inviter III role')
+            if total_uses >= 80:
+                role = discord.utils.get(user.server.roles, name='Inviter IV')
+                if role in user.roles:
+                    return
+                else:
+                    await client.add_roles(user, role)
+                    await client.say(f'Congrats! {user.name} You have got Inviter IV role')
+    else:
+        await client.say('You are not allowed to use this command in this server')
+        return 	
+	
 
 @client.command(pass_context=True)
 async def help(ctx):
