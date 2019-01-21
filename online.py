@@ -803,6 +803,23 @@ async def detailedinvites(ctx,*,user:discord.Member=None):
 
 
 @client.command(pass_context=True)
+async def inviteb(ctx):
+    total_uses=0
+    r, g, b = tuple(int(x * 255) for x in colorsys.hsv_to_rgb(random.random(), 1, 1))
+    server = ctx.message.channel.server
+    invites = await client.invites_from(server)
+    invlb = f'Invites of {ctx.message.server.name}\n'
+    for invite in invites:
+      total_uses += invite.uses
+      invlb += f'User: {invite.inviter.name}\nInvites: {invite.uses}\n'
+    embed=discord.Embed(color = discord.Color((r << 16) + (g << 8) + b))
+    embed.add_field(name='Invites List',value=invlb)
+    embed.add_field(name='Total Invites',value=total_uses)
+    embed.set_footer(text=f'Requested by: {ctx.message.author.display_name}', icon_url=f'{ctx.message.author.avatar_url}')
+    await client.say(embed=embed)		
+		
+
+@client.command(pass_context=True)
 async def help(ctx):
     embed = discord.Embed(title="__Command Prefix:__ !! ", color=0Xf9fcfc)
     embed.add_field(name="__**bot commands**__", value="`serverinfo` - This will show the server's information (Administrator). \n`poll` - Polling (Administrator). \n`clear<number>` - will clear messages(Administrator). \n\n`lovedetect<@user1><@user2>` - This will show how the users love each other. \n`avatar<user>` -  Avatar of mentioned user. \n`meme` - This will show a meme image. \n`slap<@user>` - This will slap the user. \n`hug<@user>` -  This will hug a user. \n`kiss<@user>` - This will kiss the user. \n`joke` - This will tell you a joke. ", inline=True)
