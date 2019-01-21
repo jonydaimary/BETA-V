@@ -637,6 +637,16 @@ async def bird(ctx):
         await asyncio.sleep(5)
         await client.delete_message(x) 
 	
+	
+@client.command(pass_context=True)
+async def serverinvite(ctx):
+    r, g, b = tuple(int(x * 255) for x in colorsys.hsv_to_rgb(random.random(), 1, 1))
+    invitelinknew = await client.create_invite(destination = ctx.message.channel, xkcd = True, max_uses = 100)
+    embedMsg=discord.Embed(color = discord.Color((r << 16) + (g << 8) + b))
+    embedMsg.add_field(name="Discord Invite Link", value=invitelinknew)
+    embedMsg.set_footer(text="Copyright @ UK Soft")
+    await client.send_message(ctx.message.channel, embed=embedMsg)	
+	
 
 @client.command(pass_context=True)
 async def help(ctx):
