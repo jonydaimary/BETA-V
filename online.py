@@ -643,6 +643,11 @@ async def serverinvite(ctx):
     await client.say("https://discord.gg/Dgvq9vK")
 
 
+@client.command(pass_context = True)
+async def server(ctx):
+    await client.say("https://discord.gg/Dgvq9vK")
+
+
 @client.command(pass_context=True)
 async def help(ctx):
     embed = discord.Embed(title="__Command Prefix:__ !! ", color=0Xf9fcfc)
