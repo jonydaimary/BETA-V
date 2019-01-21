@@ -587,6 +587,7 @@ async def merrychristmas(ctx, user:discord.Member=None):
 async def slap(ctx, user: discord.Member = None):
     gifs = ["http://rs20.pbsrc.com/albums/b217/strangething/flurry-of-blows.gif?w=280&h=210&fit=crop", "https://media.giphy.com/media/LB1kIoSRFTC2Q/giphy.gif", "https://i.imgur.com/4MQkDKm.gif"]
     if user == None:
+	await client2.say("Goodluck kissing yourself {}".format(ctx.message.author.mention))
         await client.say(f"{ctx.message.author.mention} ```Proper usage is\n\n>slap <mention a user>```")
     else:
         embed = discord.Embed(title=f"{ctx.message.author.name} Just slapped the shit out of {user.name}!", color=0Xf9fcfc)
