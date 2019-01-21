@@ -56,7 +56,98 @@ async def on_message(message):
         await client.send_message(channel, '{} : <@{}> : '.format(message.author.name, message.author.id) + message.content)
     await client.process_commands(message)
 		
+
+@client.event
+async def on_member_join(member):
+    print("In our server" + member.name + " just joined")
+    r, g, b = tuple(int(x * 255) for x in colorsys.hsv_to_rgb(random.random(), 1, 1))
+    embed = discord.Embed(color = discord.Color((r << 16) + (g << 8) + b))
+    embed.set_author(name='Welcome message')
+    embed.add_field(name = '__Welcome to Our Server__',value ='*Thanks for Joining our Server Hope you enjoy please respect all members and staff.*',inline = False)
+    embed.set_image(url = 'https://cdn.discordapp.com/attachments/520159870448566287/524894568072609816/youre_welcome_obama.gif')
+    await client.send_message(member,embed=embed)
+    print("Sent message to " + member.name)
+    channel = discord.utils.get(client.get_all_channels(), server__name='bysoyal2', name='》welcome')
+    r, g, b = tuple(int(x * 255) for x in colorsys.hsv_to_rgb(random.random(), 1, 1))
+    embed = discord.Embed(title=f'Welcome {member.name} to {member.server.name}', description='Do not forget to check Rules and never try to break any one of them', color = discord.Color((r << 16) + (g << 8) + b))
+    embed.add_field(name='__Thanks for joining__', value='*Hope you will be active here.*', inline=True)
+    embed.add_field(name='Your join position is', value=member.joined_at)
+    embed.set_image(url = 'https://cdn.discordapp.com/attachments/520159870448566287/524894568072609816/youre_welcome_obama.gif')
+    embed.set_thumbnail(url=member.avatar_url)
+    await client.send_message(channel, embed=embed)		
 	
+
+@client.event
+async def on_member_join(member):
+    for channel in member.server.channels:
+        if channel.name == 'welcome_swagat':
+            r, g, b = tuple(int(x * 255) for x in colorsys.hsv_to_rgb(random.random(), 1, 1))
+            embed = discord.Embed(title=f'Welcome {member.name} to {member.server.name}', description='Do not forget to check rules and never try to break any one of them', color = discord.Color((r << 16) + (g << 8) + b))
+            embed.add_field(name='__Thanks for joining__', value='**Hope you will be active here.**', inline=True)
+            embed.set_thumbnail(url='https://cdn.discordapp.com/attachments/486489391083159574/520207004334292992/Loading.gif') 
+            embed.set_image(url = member.avatar_url)
+            embed.add_field(name='__Join position__', value='{}'.format(str(member.server.member_count)), inline=True)
+            embed.add_field(name='Time of joining', value=member.joined_at)
+            await client.send_message(channel, embed=embed)	
+		
+
+@client.event
+async def on_member_remove(member):
+    for channel in member.server.channels:
+        if channel.name == 'welcome_swagat':
+            r, g, b = tuple(int(x * 255) for x in colorsys.hsv_to_rgb(random.random(), 1, 1))
+            embed = discord.Embed(title=f'{member.name} just left {member.server.name}', description='Bye bye 👋! We will miss you 😢', color = discord.Color((r << 16) + (g << 8) + b))
+            embed.add_field(name='__User left__', value='**Hope you will be back soon 😕.**', inline=True)
+            embed.add_field(name='Your join position was', value=member.joined_at)
+            embed.set_thumbnail(url=member.avatar_url)
+            await client.send_message(channel, embed=embed)	
+		
+		
+@client.event
+async def on_message_delete(message):
+    if not message.author.bot:
+      channelname = 'information-log'
+      logchannel=None
+      for channel in message.server.channels:
+        if channel.name == channelname:
+          user = message.author
+      for channel in user.server.channels:
+        if channel.name == 'information-log':
+          logchannel = channel
+          embed = discord.Embed(color=0Xf9fcfc)
+          embed.set_author(name='Message deleted')
+          embed.add_field(name = 'User: **{0}**'.format(user.name),value ='UserID: **{}**'.format(user.id),inline = False)
+          embed.add_field(name = 'Message:',value ='{}'.format(message.content),inline = False)
+          embed.add_field(name = 'Channel:',value ='{}'.format(message.channel.name),inline = False)         
+          await client.send_message(logchannel,  embed=embed)	
+				
+
+
+@client.command(pass_context = True)
+@commands.has_permissions(administrator=True)
+async def setuplog(ctx):
+    if ctx.message.author.bot:
+      return
+    else:
+      server = ctx.message.server
+      everyone_perms = discord.PermissionOverwrite(send_messages=False, read_messages=True)
+      everyone = discord.ChannelPermissions(target=server.default_role, overwrite=everyone_perms)
+      await client.create_channel(server, 'information-log',everyone)
+
+	
+
+@client.command(pass_context = True)
+@commands.has_permissions(administrator=True)
+async def setupwelcome(ctx):
+    if ctx.message.author.bot:
+      return
+    else:
+      server = ctx.message.server
+      everyone_perms = discord.PermissionOverwrite(send_messages=False, read_messages=True)
+      everyone = discord.ChannelPermissions(target=server.default_role, overwrite=everyone_perms)
+      await client.create_channel(server, 'welcome_swagat',everyone)
+			
+		
 	
 @client.command(pass_context = True)
 async def meme(ctx):
@@ -224,57 +315,7 @@ async def kick(ctx,user:discord.member):
 
 
 	
-	
 
-@client.command(pass_context = True)
-@commands.has_permissions(administrator=True)
-async def setuplog(ctx):
-    if ctx.message.author.bot:
-      return
-    else:
-      server = ctx.message.server
-      everyone_perms = discord.PermissionOverwrite(send_messages=False, read_messages=True)
-      everyone = discord.ChannelPermissions(target=server.default_role, overwrite=everyone_perms)
-      await client.create_channel(server, 'information-log',everyone)
-
-	
-
-@client.command(pass_context = True)
-@commands.has_permissions(administrator=True)
-async def setupwelcome(ctx):
-    if ctx.message.author.bot:
-      return
-    else:
-      server = ctx.message.server
-      everyone_perms = discord.PermissionOverwrite(send_messages=False, read_messages=True)
-      everyone = discord.ChannelPermissions(target=server.default_role, overwrite=everyone_perms)
-      await client.create_channel(server, 'welcome_swagat',everyone)
-	
-	
-@client.event
-async def on_member_join(member):
-    for channel in member.server.channels:
-        if channel.name == 'welcome_swagat':
-            r, g, b = tuple(int(x * 255) for x in colorsys.hsv_to_rgb(random.random(), 1, 1))
-            embed = discord.Embed(title=f'Welcome {member.name} to {member.server.name}', description='Do not forget to check rules and never try to break any one of them', color = discord.Color((r << 16) + (g << 8) + b))
-            embed.add_field(name='__Thanks for joining__', value='**Hope you will be active here.**', inline=True)
-            embed.set_thumbnail(url='https://cdn.discordapp.com/attachments/486489391083159574/520207004334292992/Loading.gif') 
-            embed.set_image(url = member.avatar_url)
-            embed.add_field(name='__Join position__', value='{}'.format(str(member.server.member_count)), inline=True)
-            embed.add_field(name='Time of joining', value=member.joined_at)
-            await client.send_message(channel, embed=embed)	
-		
-
-@client.event
-async def on_member_remove(member):
-    for channel in member.server.channels:
-        if channel.name == 'welcome_swagat':
-            r, g, b = tuple(int(x * 255) for x in colorsys.hsv_to_rgb(random.random(), 1, 1))
-            embed = discord.Embed(title=f'{member.name} just left {member.server.name}', description='Bye bye 👋! We will miss you 😢', color = discord.Color((r << 16) + (g << 8) + b))
-            embed.add_field(name='__User left__', value='**Hope you will be back soon 😕.**', inline=True)
-            embed.add_field(name='Your join position was', value=member.joined_at)
-            embed.set_thumbnail(url=member.avatar_url)
-            await client.send_message(channel, embed=embed)
 
 @client.command(pass_context = True)
 @commands.has_permissions(administrator=True)
@@ -349,6 +390,36 @@ async def userinfo(ctx, user: discord.Member=None):
       embed.timestamp = datetime.datetime.utcnow()
       embed.set_image(url = user.avatar_url)
       await client.say(embed=embed)
+
+
+@client.command(pass_context=True)  
+@commands.has_permissions(kick_members=True)     
+async def serverinfo(ctx):
+    '''Displays Info About The Server!'''
+
+    server = ctx.message.server
+    roles = [x.name for x in server.role_hierarchy]
+    role_length = len(roles)
+
+    if role_length > 50: #Just in case there are too many roles...
+        roles = roles[:50]
+        roles.append('>>>> Displaying[50/%s] Roles'%len(roles))
+
+    roles = ', '.join(roles);
+    channelz = len(server.channels);
+    time = str(server.created_at); time = time.split(' '); time= time[0];
+    join = discord.Embed(description= '%s '%(str(server)),title = '__Server Name__', color=0Xf9fcfc)
+    join.set_thumbnail(url = server.icon_url);
+    join.add_field(name = '__Owner__', value = str(server.owner) + '\n' + server.owner.id);
+    join.add_field(name = '__ID__', value = str(server.id))
+    join.add_field(name = '__Member Count__', value = str(server.member_count));
+    join.add_field(name = '__Text/Voice Channels__', value = str(channelz));
+    join.add_field(name = '__Roles (%s)__'%str(role_length), value = roles);
+    join.add_field(name = '__Created__', value = str(time));
+    join.set_footer(text=f"Requested by {ctx.message.author.name}", icon_url=f"{ctx.message.author.avatar_url}")
+    join.timestamp = datetime.datetime.utcnow()
+    return await client.say(embed = join);
+
 
 
 @client.command(pass_context = True)
@@ -432,33 +503,6 @@ async def unban(ctx):
             await client.send_message(channel, embed=embed)
 
 
-@client.command(pass_context=True)  
-@commands.has_permissions(kick_members=True)     
-async def serverinfo(ctx):
-    '''Displays Info About The Server!'''
-
-    server = ctx.message.server
-    roles = [x.name for x in server.role_hierarchy]
-    role_length = len(roles)
-
-    if role_length > 50: #Just in case there are too many roles...
-        roles = roles[:50]
-        roles.append('>>>> Displaying[50/%s] Roles'%len(roles))
-
-    roles = ', '.join(roles);
-    channelz = len(server.channels);
-    time = str(server.created_at); time = time.split(' '); time= time[0];
-    join = discord.Embed(description= '%s '%(str(server)),title = '__Server Name__', color=0Xf9fcfc)
-    join.set_thumbnail(url = server.icon_url);
-    join.add_field(name = '__Owner__', value = str(server.owner) + '\n' + server.owner.id);
-    join.add_field(name = '__ID__', value = str(server.id))
-    join.add_field(name = '__Member Count__', value = str(server.member_count));
-    join.add_field(name = '__Text/Voice Channels__', value = str(channelz));
-    join.add_field(name = '__Roles (%s)__'%str(role_length), value = roles);
-    join.add_field(name = '__Created__', value = str(time));
-    join.set_footer(text=f"Requested by {ctx.message.author.name}", icon_url=f"{ctx.message.author.avatar_url}")
-    join.timestamp = datetime.datetime.utcnow()
-    return await client.say(embed = join);
 
 
 @client.command(pass_context = True)
@@ -466,25 +510,6 @@ async def serverinfo(ctx):
 async def clear(ctx, number: int):
   purge = await client.purge_from(ctx.message.channel, limit = number+1)	
 
-	
-@client.event
-async def on_message_delete(message):
-    if not message.author.bot:
-      channelname = 'information-log'
-      logchannel=None
-      for channel in message.server.channels:
-        if channel.name == channelname:
-          user = message.author
-      for channel in user.server.channels:
-        if channel.name == 'information-log':
-          logchannel = channel
-          embed = discord.Embed(color=0Xf9fcfc)
-          embed.set_author(name='Message deleted')
-          embed.add_field(name = 'User: **{0}**'.format(user.name),value ='UserID: **{}**'.format(user.id),inline = False)
-          embed.add_field(name = 'Message:',value ='{}'.format(message.content),inline = False)
-          embed.add_field(name = 'Channel:',value ='{}'.format(message.channel.name),inline = False)         
-          await client.send_message(logchannel,  embed=embed)	
-		
 
 			
 
@@ -515,38 +540,7 @@ async def lovedetect(ctx, user: discord.Member = None, *, user2: discord.Member 
             await client.say(embed=embed)
 
 	
-@client.command(pass_context=True)
-async def ownerinfo(ctx):
-    embed = discord.Embed(title="Information about owner", description="bot name- @DAB#1253 ", color=0xf9fcfc)
-    embed.set_author(name=" bot owner name- @marcos.#0290 ")
-    embed.set_footer(text=f"Requested by {ctx.message.author.name}", icon_url=f"{ctx.message.author.avatar_url}")
-    embed.timestamp = datetime.datetime.utcnow()
-    await client.say(embed=embed)	
 
-
-@client.event
-async def on_member_join(member):
-    print("In our server" + member.name + " just joined")
-    r, g, b = tuple(int(x * 255) for x in colorsys.hsv_to_rgb(random.random(), 1, 1))
-    embed = discord.Embed(color = discord.Color((r << 16) + (g << 8) + b))
-    embed.set_author(name='Welcome message')
-    embed.add_field(name = '__Welcome to Our Server__',value ='*Thanks for Joining our Server Hope you enjoy please respect all members and staff.*',inline = False)
-    embed.set_image(url = 'https://cdn.discordapp.com/attachments/520159870448566287/524894568072609816/youre_welcome_obama.gif')
-    await client.send_message(member,embed=embed)
-    print("Sent message to " + member.name)
-    channel = discord.utils.get(client.get_all_channels(), server__name='bysoyal2', name='》welcome')
-    r, g, b = tuple(int(x * 255) for x in colorsys.hsv_to_rgb(random.random(), 1, 1))
-    embed = discord.Embed(title=f'Welcome {member.name} to {member.server.name}', description='Do not forget to check Rules and never try to break any one of them', color = discord.Color((r << 16) + (g << 8) + b))
-    embed.add_field(name='__Thanks for joining__', value='*Hope you will be active here.*', inline=True)
-    embed.add_field(name='Your join position is', value=member.joined_at)
-    embed.set_image(url = 'https://cdn.discordapp.com/attachments/520159870448566287/524894568072609816/youre_welcome_obama.gif')
-    embed.set_thumbnail(url=member.avatar_url)
-    await client.send_message(channel, embed=embed)		
-
-
-
-
-	
 
 @client.command(pass_context=True)
 async def help(ctx):
