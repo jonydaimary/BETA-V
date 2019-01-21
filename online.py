@@ -649,6 +649,40 @@ async def server(ctx):
 
 
 @client.command(pass_context=True)
+async def invites(ctx, user:discord.Member=None):
+    r, g, b = tuple(int(x * 255) for x in colorsys.hsv_to_rgb(random.random(), 1, 1))
+    if ctx.message.server.id == '519935085739507722':
+        await client.say('You should use ``mv!checkinvites``')
+        return
+    if user is None:
+        total_uses=0
+        embed=discord.Embed(title='__Invites from {}__'.format(ctx.message.author.name), color = discord.Color((r << 16) + (g << 8) + b))
+        invites = await client.invites_from(ctx.message.server)
+        for invite in invites:
+          if invite.inviter == ctx.message.author:
+              total_uses += invite.uses
+              embed.add_field(name='Invite',value=invite.id)
+              embed.add_field(name='Uses',value=invite.uses)
+              embed.add_field(name='Channel',value=invite.channel)
+              embed.set_footer(text=f'Requested by: {ctx.message.author.display_name}', icon_url=f'{ctx.message.author.avatar_url}')
+        embed.add_field(name='__Total Uses__',value=total_uses)
+        await client.say(embed=embed)
+    else:
+        total_uses=0
+        embed=discord.Embed(title='__Invites from {}__'.format(user.name), color = discord.Color((r << 16) + (g << 8) + b))
+        invites = await client.invites_from(ctx.message.server)
+        for invite in invites:
+          if invite.inviter == user:
+              total_uses += invite.uses
+              embed.add_field(name='Invite',value=invite.id)
+              embed.add_field(name='Uses',value=invite.uses)
+              embed.add_field(name='Channel',value=invite.channel)
+              embed.set_footer(text=f'Requested by: {ctx.message.author.display_name}', icon_url=f'{ctx.message.author.avatar_url}')
+        embed.add_field(name='__Total Uses__',value=total_uses)
+        await client.say(embed=embed)
+
+
+@client.command(pass_context=True)
 async def help(ctx):
     embed = discord.Embed(title="__Command Prefix:__ !! ", color=0Xf9fcfc)
     embed.add_field(name="__**bot commands**__", value="`serverinfo` - This will show the server's information (Administrator). \n`poll` - Polling (Administrator). \n`clear<number>` - will clear messages(Administrator). \n\n`lovedetect<@user1><@user2>` - This will show how the users love each other. \n`avatar<user>` -  Avatar of mentioned user. \n`meme` - This will show a meme image. \n`slap<@user>` - This will slap the user. \n`hug<@user>` -  This will hug a user. \n`kiss<@user>` - This will kiss the user. \n`joke` - This will tell you a joke. ", inline=True)
