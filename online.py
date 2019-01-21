@@ -690,6 +690,13 @@ async def thuglife(ctx):
     await client.say(embed=embed)
     await client.delete_message(ctx.message)
 	
+	
+	
+@client.command(pass_context = True)
+@commands.has_permissions(manage_messages = True)
+async def clear2(ctx, number: int):
+  purge = await client.purge_from(ctx.message.channel, limit = number+1)	
+	
 		
 
 @client.command(pass_context=True)
