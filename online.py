@@ -369,6 +369,7 @@ async def setnick(ctx, user: discord.Member=None, *, nickname=None):
 
 
 @client.command(pass_context=True)
+@commands.has_permissions(administrator=True)
 async def poll(ctx, question, *options: str):
         if len(options) <= 1:
             await client.say('You need more than one option to make a poll!')
@@ -389,10 +390,9 @@ async def poll(ctx, question, *options: str):
         react_message = await client.say(embed=embed)
         for reaction in reactions[:len(options)]:
             await client.add_reaction(react_message, reaction)
-        embed.set_footer(text=f"Poll ID: {react_message.id}")
+        embed.set_footer(text=f"Poll ID: {react_message.id}", icon_url=f"{ctx.message.author.avatar_url}")
+        embed.timestamp = datetime.datetime.utcnow()
         await client.edit_message(react_message, embed=embed)
-
-	
 
 	
 
