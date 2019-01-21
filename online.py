@@ -21,6 +21,13 @@ reddit = praw.Reddit(client_id='G-SK66FZT8at9g',
                      client_secret='DLqIkkdoD0K8xKpxuaMAhRscrS0',
                      user_agent='android:com.G-SK66FZT8at9g.SolarBot:v1.2.3 (by /u/LaidDownRepaer)')
 
+CLIENT_ID = "1fd3ef04daf8cab"
+CLIENT_SECRET = "f963e574e8e3c17993c933af4f0522e1dc01e230"
+imgur = ImgurClient(CLIENT_ID,CLIENT_SECRET)
+
+GIPHY_API_KEY = "dc6zaTOxFJmzC"
+
+
 
 client.remove_command('help')
 
