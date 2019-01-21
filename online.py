@@ -580,6 +580,60 @@ async def joke(ctx):
     await client.say(embed=embed)
 
 	
+	
+@client.command(pass_context=True, no_pm=True, aliases=["Fox"])
+async def fox(ctx):
+    await client.send_typing(ctx.message.channel)
+    try:
+        url = "https://randomfox.ca/floof"
+        response = requests.get(url)
+        data = json.loads(response.text)
+        embed=discord.Embed(color=0Xf9fcfc)
+        embed.set_author(name =  "Here's Your Fox {}".format(ctx.message.author.name), icon_url = ctx.message.author.avatar_url)
+        embed.set_image(url = data["image"])
+        await client.say(embed=embed)
+    except:
+        x = await client.say("Sorry, there was an error with the **fox** command")
+        await asyncio.sleep(5)
+        await client.delete_message(x)  
+	
+    
+@client.command(pass_context=True, no_pm=True, aliases=["Bird"])
+async def bird(ctx):
+    await client.send_typing(ctx.message.channel)
+    try:
+        url = "http://shibe.online/api/birds?count=1&urls=true&httpsUrls=false"
+        response = requests.get(url)
+        data = json.loads(response.text)
+        embed=discord.Embed(color=0Xf9fcfc)
+        embed.set_author(name =  "Here's Your Bird {}".format(ctx.message.author.name), icon_url = ctx.message.author.avatar_url)
+        embed.set_image(url = data[0])
+        await client.say(embed=embed)
+    except:
+        x = await client.say("Sorry, there was an error with the **bird** command")
+        await asyncio.sleep(5)
+        await client.delete_message(x)    
+	
+	
+@client.command(pass_context=True, no_pm=True, aliases=["Cat"])
+async def cat(ctx):
+    await client.send_typing(ctx.message.channel)
+    try:
+        url = "http://shibe.online/api/cats?count=1&urls=true&httpsUrls=false"
+        response = requests.get(url)
+        data = json.loads(response.text)
+        embed=discord.Embed(color=0Xf9fcfc)
+        embed.set_author(name =  "Here's Your Cat {}".format(ctx.message.author.name), icon_url = ctx.message.author.avatar_url)
+        embed.set_image(url = data[0])
+        await client.say(embed=embed)
+    except:
+        x = await client.say("Sorry, there was an error with the **cat** command")
+        await asyncio.sleep(5)
+        await client.delete_message(x)    
+    	
+	
+	
+	
 
 @client.command(pass_context=True)
 async def help(ctx):
