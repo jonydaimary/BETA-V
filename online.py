@@ -589,8 +589,10 @@ async def fox(ctx):
         response = requests.get(url)
         data = json.loads(response.text)
         embed=discord.Embed(color=0Xf9fcfc)
-        embed.set_author(name =  "Here's Your Fox {}".format(ctx.message.author.name), icon_url = ctx.message.author.avatar_url)
+        embed.set_author(name =  "Here's Your Fox {}".format(ctx.message.author.name),)
         embed.set_image(url = data["image"])
+	embed.set_footer(text=f"Requested by {ctx.message.author.name}", icon_url=f"{ctx.message.author.avatar_url}")
+        embed.timestamp = datetime.datetime.utcnow()
         await client.say(embed=embed)
     except:
         x = await client.say("Sorry, there was an error with the **fox** command")
@@ -606,8 +608,10 @@ async def bird(ctx):
         response = requests.get(url)
         data = json.loads(response.text)
         embed=discord.Embed(color=0Xf9fcfc)
-        embed.set_author(name =  "Here's Your Bird {}".format(ctx.message.author.name), icon_url = ctx.message.author.avatar_url)
+        embed.set_author(name =  "Here's Your Bird {}".format(ctx.message.author.name),)
         embed.set_image(url = data[0])
+	embed.set_footer(text=f"Requested by {ctx.message.author.name}", icon_url=f"{ctx.message.author.avatar_url}")
+        embed.timestamp = datetime.datetime.utcnow()
         await client.say(embed=embed)
     except:
         x = await client.say("Sorry, there was an error with the **bird** command")
