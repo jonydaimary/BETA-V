@@ -610,7 +610,7 @@ async def fox(ctx):
         embed=discord.Embed(color=0Xf9fcfc)
         embed.set_author(name =  "Here's Your Fox {}".format(ctx.message.author.name),)
         embed.set_image(url = data["image"])
-    embed.set_footer(text=f"Requested by {ctx.message.author.name}", icon_url=f"{ctx.message.author.avatar_url}")
+        embed.set_footer(text=f"Requested by {ctx.message.author.name}", icon_url=f"{ctx.message.author.avatar_url}")
         embed.timestamp = datetime.datetime.utcnow()
         await client.say(embed=embed)
     except:
