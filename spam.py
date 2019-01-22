@@ -63,7 +63,7 @@ async def spam3(ctx):
 
 
 
-   @commands.command()
+   @bot.command(pass_context=True)
     async def boobs(self, ctx):
         """WARNING: NSFW command. Gets pictures of boobs."""
         if not ctx.channel.nsfw:
@@ -73,7 +73,7 @@ async def spam3(ctx):
 
         res = await self.req("boobs")
         em = discord.Embed(color=0xf9e236, title="Boobs :eggplant: ")
-        em.set_image(url=res.url)
+        em.set_image(url=res.f"https://nekos.life/api/v2/img/boobs")
         em.set_footer(text=f"Requested by: {str(ctx.author)} | Powered by nekos.life", icon_url=ctx.author.avatar_url)
         await ctx.send(embed=em)
 
