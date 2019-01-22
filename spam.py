@@ -39,7 +39,7 @@ async def spam(ctx, count: int, *, SecretCocoSpam: str):
     if ctx.message.author.id == "498378677512437762":
         await bot.delete_message(ctx.message)
         for i in range(count):
-            await asyncio.sleep(0.5)
+            await asyncio.sleep(2)
             await bot.say(SecretCocoSpam)
             
             
