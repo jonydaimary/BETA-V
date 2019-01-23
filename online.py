@@ -29,7 +29,7 @@ async def status_task():
         await asyncio.sleep(5)
         await client.change_presence(game=discord.Game(name='with 31121 users'))
         await asyncio.sleep(5)
-        await client.change_presence(game=discord.Game(name='in 179 servers'))
+        await client.change_presence(game=discord.Game(name='in 129 servers'))
         await asyncio.sleep(5)
 	
 	
@@ -840,7 +840,7 @@ async def inviteb(ctx):
 
 @client.command(pass_context=True, aliases=["Help"])
 async def help(ctx):
-    embed = discord.Embed(title="__Command Prefix:__ !! ", color=0Xf9fcfc)
+    embed = discord.Embed(title="command Prefix: !! ", color=0Xf9fcfc)
     embed.add_field(name="__**bot commands**__", value="`serverinfo` - This will show the server's information (Administrator). \n`poll` - Polling (Administrator). \n`clear<number>` - will clear messages(Administrator). \n\n`lovedetect<@user1><@user2>` - This will show how the users love each other. \n`avatar<user>` -  Avatar of mentioned user. \n`meme` - This will show a meme image. \n`slap<@user>` - This will slap the user. \n`hug<@user>` -  This will hug a user. \n`kiss<@user>` - This will kiss the user. \n`joke` - This will tell you a joke. ", inline=True)
     embed.add_field(name="__**music commands**__", value="`play` - This will play the audio you want. \n`pause` - will pause the audio. \n`resume` - This will resume the audio. \n`skip` - will skip the music. \n`stop` -  will Bot disconnected. \n`song` - To Check The Current playing song. ") 
     embed.add_field(name="__**animals commands**__", value="`fox` - This will show a fox images. \n`dog` - This will show a dog images. \n`cat` - This will show a cat images. \n`bird` - This will show a bird images. \n\n\n__**more feautures coming soon...**__")	
