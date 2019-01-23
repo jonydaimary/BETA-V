@@ -869,12 +869,12 @@ async def movie(ctx, *, name:str=None):
 async def marvel(ctx):
     choices = ['https://media.giphy.com/media/F9hQLAVhWnL56/giphy.gif', 'https://media.giphy.com/media/l4FGrYKtP0pBGpBAY/giphy.gif', 'https://media.giphy.com/media/JzujPK0id34qI/giphy.gif', 'https://media.giphy.com/media/M9TuBZs3LIQz6/giphy.gif', 'https://media.giphy.com/media/3GnKKEw2v7bXi/giphy.gif', 'https://media.giphy.com/media/GR1WWKadM9m0g/giphy.gif', 'https://media.giphy.com/media/iBpq5SbrYiSTTSHO7z/giphy.gif', 'https://media.giphy.com/media/dJirXKRo0j1l0j9V9Q/giphy.gif', 'https://media.giphy.com/media/ZvkFmclQO1ImmRNm0K/giphy.gif', 'https://media.giphy.com/media/82Mksc7tnX3qp4FVNN/giphy.gif', 'https://media.giphy.com/media/mTQhl6cWXDJBu/giphy.gif']
     embed=discord.Embed(title="Hello {}... Here's your GIF...".format(ctx.message.author.name), description="This BOT is made by marcos", color=0Xf9fcfc)
-    embed.set_thumbnail(icon_url=f'{ctx.message.author.avatar_url}')
+
     embed.set_footer(text=f'Requested by {ctx.message.author.name} ', icon_url=f'{ctx.message.author.avatar_url}')
     embed.set_image(url=random.choice(choices))
     embed.timestamp = datetime.datetime.utcnow()
     await client.send_message(ctx.message.channel, embed=embed)
-icon_url=f"{ctx.message.author.avatar_url}")
+
 	
 @client.command(pass_context=True, aliases=["Help"])
 async def help(ctx):
