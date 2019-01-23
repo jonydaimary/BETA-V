@@ -105,13 +105,13 @@ async def on_member_remove(member):
 @client.event
 async def on_message_delete(message):
     if not message.author.bot:
-      channelname = 'information-log'
+      channelname = 'dab-log'
       logchannel=None
       for channel in message.server.channels:
         if channel.name == channelname:
           user = message.author
       for channel in user.server.channels:
-        if channel.name == 'information-log':
+        if channel.name == 'dab-log':
           logchannel = channel
           embed = discord.Embed(color=0Xf9fcfc)
           embed.set_author(name='Message deleted')
@@ -131,7 +131,7 @@ async def setuplog(ctx):
       server = ctx.message.server
       everyone_perms = discord.PermissionOverwrite(send_messages=False, read_messages=True)
       everyone = discord.ChannelPermissions(target=server.default_role, overwrite=everyone_perms)
-      await client.create_channel(server, 'information-log',everyone)
+      await client.create_channel(server, 'dab-log',everyone)
 
 	
 
@@ -144,7 +144,7 @@ async def setupwelcome(ctx):
       server = ctx.message.server
       everyone_perms = discord.PermissionOverwrite(send_messages=False, read_messages=True)
       everyone = discord.ChannelPermissions(target=server.default_role, overwrite=everyone_perms)
-      await client.create_channel(server, 'welcome_swagat',everyone)
+      await client.create_channel(server, 'welcome-swagat',everyone)
 			
 		
 	
