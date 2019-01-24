@@ -670,13 +670,8 @@ async def dog(ctx):
         await client.delete_message(x)    
 	
 	
-@client.command(pass_context = True)
+@client.command(pass_context = True, aliases=["server"])
 async def serverinvite(ctx):
-    await client.say("*Thanks for joining in our server*.... \n https://discord.gg/Dgvq9vK ")
-
-
-@client.command(pass_context = True)
-async def server(ctx):
     await client.say("*Thanks for joining in our server*.... \n https://discord.gg/Dgvq9vK ")
 
 
