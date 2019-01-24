@@ -220,22 +220,18 @@ async def virus(ctx,user: discord.Member=None,*,hack=None):
 @client.command(pass_context = True)
 async def avatar(ctx, user: discord.Member=None):
     if user is None:
-        embed = discord.Embed(color=0Xf9fcfc)
-        embed.add_field(name='User: {}'.format(ctx.message.author.name), value='Avatar:', inline=True)
-        embed.set_thumbnail(url='https://cdn.discordapp.com/attachments/532088532576239647/536173122257420360/dab.webp') 
+        embed = discord.Embed(title='User: {}'.format(ctx.message.author.name), color=0Xf9fcfc)
         embed.set_image(url = ctx.message.author.avatar_url)
         embed.set_footer(text=f"Requested by {ctx.message.author.name}", icon_url=f'{ctx.message.author.avatar_url}')
         embed.timestamp = datetime.datetime.utcnow()
         await client.say(embed=embed)
     else:
-        embed = discord.Embed(color=0Xf9fcfc)
-        embed.add_field(name='User: {}'.format(user.name), value='Avatar:', inline=True)
-        embed.set_thumbnail(url='https://cdn.discordapp.com/attachments/532088532576239647/536173122257420360/dab.webp') 
+        embed = discord.Embed(title='User: {}'.format(ctx.message.author.name), color=0Xf9fcfc)
         embed.set_footer(text=f"Requested by {ctx.message.author.name}", icon_url=f"{ctx.message.author.avatar_url}")
         embed.timestamp = datetime.datetime.utcnow()
         embed.set_image(url = user.avatar_url)
         await client.say(embed=embed)
-
+	    
 	
 @client.command(pass_context = True)
 @commands.has_permissions(administrator=True) 
