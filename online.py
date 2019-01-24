@@ -976,7 +976,7 @@ async def help(ctx):
     embed.add_field(name="__**music commands**__", value="`play` - This will play the audio you want. \n`pause` - will pause the audio. \n`resume` - This will resume the audio. \n`skip` - will skip the music. \n`stop` -  will Bot disconnected. \n`song` - To Check The Current playing song. ") 
     embed.add_field(name="__**animals commands**__", value="`fox` - This will show a fox images. \n`dog` - This will show a dog images. \n`cat` - This will show a cat images. \n`bird` - This will show a bird images. ")
     embed.add_field(name="__**games commands**__", value="`rps` - This will play the rock, paper and scissors.\n`rolldice` - This will roll the dice and get 1 to 6 numbers. \n`flipcoin` - This will flip the coin. \n\n\n__**more feautures coming soon...**__")
-    embed.set_thumbnail(url='https://cdn.discordapp.com/attachments/532088532576239647/536173122257420360/dab.webp') 
+    embed.set_thumbnail(url='https://cdn.discordapp.com/attachments/532088532576239647/537947512347295774/100.gif') 
     embed.set_footer(text=f"Requested by {ctx.message.author.name}", icon_url=f"{ctx.message.author.avatar_url}")
     embed.timestamp = datetime.datetime.utcnow()
     await client.send_message(ctx.message.channel, embed=embed)    
