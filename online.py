@@ -331,6 +331,13 @@ async def warn(ctx, userName: discord.User, *, message:str):
     pass
 
 
+@client.command(pass_context=True)
+async def youtube(ctx, *, message: str):
+    new_message = message.replace(" ", "+")
+    url = f"https://www.youtube.com/results?search_query={new_message}"
+    await client.say(url)
+
+
 @client.command(pass_context = True)
 @commands.has_permissions(administrator=True)
 async def say(ctx, *, msg = None):
@@ -347,6 +354,7 @@ async def friend(ctx, user:discord.Member,):
     await client.delete_message(ctx.message)
     role = discord.utils.get(ctx.message.server.roles, name='Friend of Owner')
     await client.add_roles(ctx.message.mentions[0], role)
+
 
 
 
