@@ -237,14 +237,10 @@ async def avatar(ctx, user: discord.Member=None):
         await client.say(embed=embed)
 
 	
- 	
 @client.command(pass_context = True)
-@commands.has_permissions(administrator=True) 
-async def announce(ctx, channel: discord.Channel=None, *, msg: str):
-    embed=discord.Embed(title="Announcement", description="{}".format(msg), color = color=0xf9fcfc)
-    await client.send_message(channel, embed=embed)
-    await client.delete_message(ctx.message)
-
+@commands.has_permissions(administrator=True)
+async def announce(ctx, matter):
+    await client.send_message(ctx.message.channel, matter)
 
 @client.command(pass_context=True)
 @commands.has_permissions(administrator=True)
