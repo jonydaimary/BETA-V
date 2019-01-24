@@ -931,7 +931,7 @@ async def flipcoin(ctx):
     await client.say(embed=em)
 	
 	
-@client.command(pass_context=True, aliases=['server'])
+@client.command(pass_context=True, aliases=['members'])
 @commands.has_permissions(kick_members=True)
 async def membercount(ctx, *args):
     """
