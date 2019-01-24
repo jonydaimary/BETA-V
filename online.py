@@ -355,13 +355,12 @@ async def friend(ctx, user:discord.Member,):
 
 
 @client.command(pass_context = True)
-@commands.has_permissions(kick_members=True)     
 async def userinfo(ctx, user: discord.Member=None):
     if user is None:
       await client.say('```The proper usage is \n!!userinfo <@user>```')
       return
     else:
-      embed = discord.Embed(title="{}'s info".format(user.name), description="Here's what I could find.", color=0XFF69B4)
+      embed = discord.Embed(title="{}'s info".format(user.name), description="Here's what I could find.", color=0Xf9fcfc)
       embed.add_field(name="Name", value=user.name, inline=True)
       embed.add_field(name="ID", value=user.id, inline=True)
       embed.add_field(name="Status", value=user.status, inline=True)
@@ -875,7 +874,7 @@ async def joker(ctx):
 @client.command(pass_context=True, aliases=["Help"])
 async def help(ctx):
     embed = discord.Embed(title="command Prefix: !! ", color=0Xf9fcfc)
-    embed.add_field(name="__**bot commands**__", value="`serverinfo` - This will show the server's information (Administrator). \n`poll` - Polling (Administrator). \n`clear<number>` - will clear messages(Administrator). \n`announce` - To announce the entered **#channel** n **matter** (Administrator). \n\n`lovedetect<@user1><@user2>` - This will show how the users love each other. \n`avatar` -  Avatar of mentioned user. \n`meme` - This will show a meme image. \n`ping`  \n`slap<@user>` - This will slap the user. \n`hug<@user>` -  This will hug a user. \n`kiss<@user>` - This will kiss the user. \n`joke` - This will tell you a joke. ", inline=True)
+    embed.add_field(name="__**bot commands**__", value="`serverinfo` - This will show the server's information (Administrator). \n`poll` - Polling (Administrator). \n`clear<number>` - will clear messages(Administrator). \n`announce` - To announce the entered **#channel** n **matter** (Administrator). \n\n`userinfo` - This will show the user's information. \n`lovedetect<@user1><@user2>` - This will show how the users love each other. \n`avatar` -  Avatar of mentioned user. \n`meme` - This will show a meme image. \n`ping`  \n`slap<@user>` - This will slap the user. \n`hug<@user>` -  This will hug a user. \n`kiss<@user>` - This will kiss the user. \n`joke` - This will tell you a joke. ", inline=True)
     embed.add_field(name="__**music commands**__", value="`play` - This will play the audio you want. \n`pause` - will pause the audio. \n`resume` - This will resume the audio. \n`skip` - will skip the music. \n`stop` -  will Bot disconnected. \n`song` - To Check The Current playing song. ") 
     embed.add_field(name="__**animals commands**__", value="`fox` - This will show a fox images. \n`dog` - This will show a dog images. \n`cat` - This will show a cat images. \n`bird` - This will show a bird images. \n\n\n__**more feautures coming soon...**__")	
     embed.set_thumbnail(url='https://cdn.discordapp.com/attachments/532088532576239647/536173122257420360/dab.webp') 
