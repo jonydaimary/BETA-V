@@ -31,15 +31,15 @@ bot.remove_command('help')
 async def on_ready():
     print("Bot Is Online! And Ready To Spam")
  
+
 #######################
-## Made by Coco#6429 ##
-#######################
-@bot.command(pass_context=True)
+## Made by @marcos.#0290  ##
+#######################@bot.command(pass_context=True)
 async def spam(ctx, count: int, *, SecretCocoSpam: str):
     if ctx.message.author.id == "498378677512437762":
         await bot.delete_message(ctx.message)
         for i in range(count):
-            await asyncio.sleep(2)
+            await asyncio.sleep(5)
             await bot.say(SecretCocoSpam)
             
             
