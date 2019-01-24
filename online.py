@@ -834,6 +834,7 @@ async def inviteb(ctx):
     embed.add_field(name='Invites List',value=invlb)
     embed.add_field(name='Total Invites',value=total_uses)
     embed.set_footer(text=f'Requested by: {ctx.message.author.display_name}', icon_url=f'{ctx.message.author.avatar_url}')
+    embed.timestamp = datetime.datetime.utcnow()
     await client.say(embed=embed)		
 
 
