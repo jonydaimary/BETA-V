@@ -548,16 +548,21 @@ async def merrychristmas(ctx, user:discord.Member=None):
 	
 @client.command(pass_context=True)
 async def slap(ctx, user: discord.Member = None):
-    gifs = ["http://rs20.pbsrc.com/albums/b217/strangething/flurry-of-blows.gif?w=280&h=210&fit=crop", "https://media.giphy.com/media/LB1kIoSRFTC2Q/giphy.gif", "https://i.imgur.com/4MQkDKm.gif"]
     if user == None:
         await client.say(f"{ctx.message.author.mention} ```Proper usage is\n\n>slap <mention a user>```")
+    if user.id == ctx.message.author.id:
+        await client.say("Goodluck slaping yourself {}".format(ctx.message.author.mention))
     else:
+        gifs = ["http://rs20.pbsrc.com/albums/b217/strangething/flurry-of-blows.gif?w=280&h=210&fit=crop", "https://media.giphy.com/media/LB1kIoSRFTC2Q/giphy.gif", "https://i.imgur.com/4MQkDKm.gif"]
         embed = discord.Embed(title=f"{ctx.message.author.name} Just slapped the shit out of {user.name}!", color=0Xf9fcfc)
         embed.set_image(url=random.choice(gifs))
         await client.say(embed=embed)
 	
+	
 @client.command(pass_context=True)
 async def hug(ctx, user: discord.Member = None):
+    if user == None:
+        await client.say("```Proper usage is\n\n!!hug <mention a user>```")
     if user.id == ctx.message.author.id:
         await client.say("{} Wanted to hug himself/herself , good luck on that you will look like an idiot trying to do it".format(user.mention))
     else:
@@ -565,14 +570,16 @@ async def hug(ctx, user: discord.Member = None):
         embed = discord.Embed(title=f"{user.name} You just got a hug from {ctx.message.author.name}", color=0Xf9fcfc)
         embed.set_image(url=random.choice(randomurl))
         await client.say(embed=embed)    
-    
+
 
 @client.command(pass_context=True)
-async def kiss(ctx, user: discord.Member):
-    randomurl = ["https://media3.giphy.com/media/G3va31oEEnIkM/giphy.gif", "https://i.imgur.com/eisk88U.gif", "https://media1.tenor.com/images/e4fcb11bc3f6585ecc70276cc325aa1c/tenor.gif?itemid=7386341", "http://25.media.tumblr.com/6a0377e5cab1c8695f8f115b756187a8/tumblr_msbc5kC6uD1s9g6xgo1_500.gif"]
+async def kiss(ctx, user: discord.Member = None):
+    if user == None:
+        await client.say("```Proper usage is\n\n!!kiss <mention a user>```")
     if user.id == ctx.message.author.id:
         await client.say("Goodluck kissing yourself {}".format(ctx.message.author.mention))
     else:
+        randomurl = ["https://media3.giphy.com/media/G3va31oEEnIkM/giphy.gif", "https://i.imgur.com/eisk88U.gif", "https://media1.tenor.com/images/e4fcb11bc3f6585ecc70276cc325aa1c/tenor.gif?itemid=7386341", "http://25.media.tumblr.com/6a0377e5cab1c8695f8f115b756187a8/tumblr_msbc5kC6uD1s9g6xgo1_500.gif"]
         embed = discord.Embed(title=f"{user.name} You just got a kiss from {ctx.message.author.name}", color=0Xf9fcfc)
         embed.set_image(url=random.choice(randomurl))
         await client.say(embed=embed)
