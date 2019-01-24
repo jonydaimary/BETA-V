@@ -814,30 +814,7 @@ async def inviteb(ctx):
 
 	
 	
-
-@client.command(pass_context = True)
-async def detailedinvites(ctx,*,user:discord.Member=None):
-    invite = await client.invites_from(ctx.message.server)
-    if user is None:
-        for invite in invite:
-          if invite.inviter == ctx.message.author:
-              embed = discord.Embed(color = 0xf9fcfc)
-              embed.add_field(name = 'Link used for inviting:',value =f'{invite.url}'.format(), inline=False)
-              embed.add_field(name = 'Invites from this link:',value =f'{invite.uses}', inline=False)
-              embed.add_field(name = 'Created at:',value =f'{invite.created_at}', inline=False)
-              embed.add_field(name = 'Channel:',value =f'{invite.channel}', inline=False)
-              embed.add_field(name = 'ID:',value =f'{invite.id}', inline=False)
-              await client.say(embed=embed)
-    else:
-        for invite in invite:
-          if invite.inviter == user:
-	          embed = discord.Embed(color = 0xf9fcfc)
-              embed.add_field(name = 'Link used for inviting:',value =f'{invite.url}'.format(), inline=False)
-              embed.add_field(name = 'Invites from this link:',value =f'{invite.uses}', inline=False)
-              embed.add_field(name = 'Created at:',value =f'{invite.created_at}', inline=False)
-              embed.add_field(name = 'Channel:',value =f'{invite.channel}', inline=False)
-              embed.add_field(name = 'ID:',value =f'{invite.id}', inline=False)
-              await client.say(embed=embed	
+	
 
 @client.command(pass_context=True)
 async def movie(ctx, *, name:str=None):
