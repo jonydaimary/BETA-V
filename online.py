@@ -31,6 +31,8 @@ async def status_task():
         await asyncio.sleep(5)
         await client.change_presence(game=discord.Game(name='in 129 servers'))
         await asyncio.sleep(5)
+	await client.change_presence(game=discord.Game(name='bot is beta testing'))
+        await asyncio.sleep(5)
 	
 	
 	
