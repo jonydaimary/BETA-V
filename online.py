@@ -238,7 +238,7 @@ async def avatar(ctx, user: discord.Member=None):
 async def announce(ctx, channel: discord.Channel=None, *, msg: str=None):
     member = ctx.message.author
     if channel is None or msg is None:
-        await client.say('```Proper usage is \n\n!!announce *#channel matter*```')
+        await client.say('```Proper usage is \n\n!!announce #channel matter```')
         return
     else:
         if member.server_permissions.administrator == False:
