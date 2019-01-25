@@ -237,14 +237,18 @@ async def avatar(ctx, user: discord.Member=None):
 	    
 	
 @client.command(pass_context = True)
-@commands.has_permissions(administrator=True) 
-async def announce(ctx, channel: discord.Channel=None, *, msg: str):
-    embed=discord.Embed(description="{}".format(msg), color = 0xf9fcfc)
-    await client.send_message(channel, embed=embed)
-    await client.delete_message(ctx.message)
-
-
-
+async def announce(ctx, channel: discord.Channel=None, *, msg: str=None):
+    member = ctx.message.author
+    if channel is None or msg is None:
+        await client.say('```Proper usage is \n\n!!announce #channel text here```')
+        return
+    else:
+        if member.server_permissions.administrator == False:
+            await client.say('**You do not have permission to use this command**')
+            return
+        else:
+            await client.send_message(channel, msg)
+            await client.delete_message(ctx.message)
 	
 	
 @client.command(pass_context = True)
