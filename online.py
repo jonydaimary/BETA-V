@@ -32,9 +32,7 @@ async def status_task():
         await asyncio.sleep(5)
         await client.change_presence(game=discord.Game(name='BOT IS BETA TESTING')) 
         await asyncio.sleep(5)
-        await client.change_presence(game=discord.Game(name='///\/\////\\\')) 
-        await asyncio.sleep(5)
-	
+        
 	
 	
 @client.event
