@@ -229,7 +229,7 @@ async def avatar(ctx, user: discord.Member=None):
         embed.timestamp = datetime.datetime.utcnow()
         await client.say(embed=embed)
     else:
-        embed = discord.Embed(title='User: {}'.format(ctx.message.author.name), color=0Xf9fcfc)
+        embed = discord.Embed(title='User: {}'.format(user.name), color=0Xf9fcfc)
         embed.set_footer(text=f"Requested by {ctx.message.author.name}", icon_url=f"{ctx.message.author.avatar_url}")
         embed.timestamp = datetime.datetime.utcnow()
         embed.set_image(url = user.avatar_url)
