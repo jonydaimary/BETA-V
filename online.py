@@ -962,6 +962,8 @@ async def botinfo(ctx):
     embed = discord.Embed(title="Dab information", color=0Xf9fcfc)
     embed.add_field(name="__**Bot name**___", value="DAB", inline = True)
     embed.add_field(name="__**Bot id**__", value="520267296506249216", inline = True)
+    embed.add_field(name="__**Bot prefix**__", value="!!", inline = True)
+    embed.add_field(name="__**Bot language**__", value="Python", inline = True)
     embed.add_field(name="__**Creator**__", value="@marcos.#0290", inline = True)
     embed.add_field(name="__**Special Thanks To**__", value="@I'm Joker#7475")
     embed.add_field(name="__**Bot servers**__", value=str(len(client.servers)), inline = True)
