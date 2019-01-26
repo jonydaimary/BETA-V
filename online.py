@@ -267,6 +267,7 @@ async def botinvite(ctx):
       return
     else:
       embed=discord.Embed(title="Invite dab to your server!", description="[Click to invite dab](https://discordapp.com/api/oauth2/authorize?client_id=520267296506249216&permissions=8&scope=bot)" , color=0Xf9fcfc)
+      embed.add_field(name="Join dab home server!", value"[Click to join dab server](https://discord.gg/dFM9HG6)")
       embed.set_footer(text=f"Requested by {ctx.message.author.name}", icon_url=f"{ctx.message.author.avatar_url}")
       embed.timestamp = datetime.datetime.utcnow()
       await client.say(embed=embed)
