@@ -954,7 +954,23 @@ async def membercount(ctx, *args):
                         "Created:   %s\n" \
                         "**" % (membs, membs_on, users, users_on, bots, bots_on, created)
 
-    await client.send_message(ctx.message.channel, embed=em)	     
+    await client.send_message(ctx.message.channel, embed=em)	 
+	
+
+
+@client.command(pass_context = True)
+async def botinfo(ctx):
+    embed=discord.Embed(title="Details of this BOT...", description="Here are the details of this BOT below", color=0Xf9fcfc)
+    embed.set_thumbnail(url='https://cdn.discordapp.com/attachments/532088532576239647/537947512347295774/100.gif')
+    embed.set_footer(text=f'Requested by {ctx.message.author.name}', icon_url=f'{ctx.message.author.avatar_url}')
+    embed.timestamp = datetime.datetime.utcnow()
+    embed.add_field(name="__**Creator**__", value="__**@marcos.#0290**__", inline = True)
+    embed.add_field(name="__**Special Thanks To**__", value="__**@I'm Joker#7475**__")
+    embed.add_field(name="**Currently connected servers**", value=str(len(client.servers)), inline = True)
+    embed.add_field(name="**Currently connected users**", value=str(len(set(client.get_all_members()))), inline = True)
+    embed.add_field(name="If you have any queries about this BOT, DM me...", value="**@marcos.#0290**")
+    embed.timestamp = datetime.datetime.utcnow()
+    await client.send_message(ctx.message.channel, embed=embed)
 
 	
 @client.command(pass_context=True, aliases=["Help"])
