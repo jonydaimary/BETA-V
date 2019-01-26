@@ -261,7 +261,7 @@ async def dm(ctx, user: discord.Member, *, msg: str):
 
 		
 	
-@client.command(pass_context = True)
+@client.command(pass_context = True, aliases=["invite"])
 async def botinvite(ctx):
     if ctx.message.author.bot:
       return
