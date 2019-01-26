@@ -969,8 +969,8 @@ async def botinfo(ctx):
     embed.add_field(name="__**Special Thanks To**__", value="@I'm Joker#7475")
     embed.add_field(name="**Bot servers**", value=str(len(client.servers)), inline = True)
     embed.add_field(name="**Bot users**", value=str(len(set(client.get_all_members()))), inline = True)
-    embad.add_field(name="**Bot invite**", value="[Click Here](https://discordapp.com/api/oauth2/authorize?client_id=520267296506249216&permissions=8&scope=bot)")
-    embed.add_field(name="If you have any queries about this BOT, DM me...", value="**@marcos.#0290**")
+    embad.add_field(name="**Bot invite**", value="[Click Here](https://discordapp.com/api/oauth2/authorize?client_id=520267296506249216&permissions=8&scope=bot)", inline = True)
+    embed.add_field(name="If you have any queries about this BOT, DM me...", value="**@marcos.#0290**", inline = True)
     embed.timestamp = datetime.datetime.utcnow()
     await client.send_message(ctx.message.channel, embed=embed)
 
