@@ -255,7 +255,7 @@ async def dm(ctx, user: discord.Member, *, msg: str):
         await client.delete_message(ctx.message)          
         await client.say("Success! Your DM has made it! :white_check_mark: ")
     except discord.ext.commands.MissingPermissions:
-        await client.say("Aw, come on! You thought you could get away with DM'ing people without permissions.")
+        await client.say("**You do not have permission to use this command**")
     except:
         await client.say("Error :x:. Make sure your message is shaped in this way: !!dm [tag person] [msg]")
 
