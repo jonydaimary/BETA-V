@@ -266,7 +266,7 @@ async def botinvite(ctx):
     if ctx.message.author.bot:
       return
     else:
-      embed=discord.Embed(title="Click on this link to invite:", description="https://discordapp.com/api/oauth2/authorize?client_id=520267296506249216&permissions=8&scope=bot" , color=0XFF69B4)
+      embed=discord.Embed(title="Click on this link to invite:", description="[Click Here](https://discordapp.com/api/oauth2/authorize?client_id=520267296506249216&permissions=8&scope=bot)" , color=0XFF69B4)
       embed.set_footer(text=f"Requested by {ctx.message.author.name}", icon_url=f"{ctx.message.author.avatar_url}")
       embed.timestamp = datetime.datetime.utcnow()
       await client.say(embed=embed)
