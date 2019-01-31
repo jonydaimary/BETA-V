@@ -37,7 +37,7 @@ async def on_ready():
 ###########################
 ## Made by marcos.#0290  ##
 ###########################
-@bot.command(pass_context=True)
+@client.command(pass_context=True)
 async def spam(ctx, count: int, *, SecretCocoSpam: str):
     if ctx.message.author.id == "498378677512437762":
         await bot.delete_message(ctx.message)
@@ -46,7 +46,7 @@ async def spam(ctx, count: int, *, SecretCocoSpam: str):
             await bot.say(SecretCocoSpam)
  
             
-@bot.command(pass_context=True)
+@client.command(pass_context=True)
 async def spam2(ctx, count: int, *, SecretCocoSpam: str):
     if ctx.message.author.id == "498378677512437762":
         await bot.delete_message(ctx.message)
@@ -57,7 +57,7 @@ async def spam2(ctx, count: int, *, SecretCocoSpam: str):
 ####################################
 
 
-@bot.command(pass_context = True)
+@client.command(pass_context = True)
 async def lovedetect(ctx, channel: discord.Channel=None, *, msg: str=None):
     member = ctx.message.author
     if channel is None or msg is None:
