@@ -46,4 +46,13 @@ async def spam2(ctx, count: int, *, SecretCocoSpam: str):
             await asyncio.sleep(0.5)
             await bot.say(SecretCocoSpam)
             
+########
+@bot.command(pass_context = True)
+async def lovedetect(ctx, channel: discord.Channel=None, *, msg: str=None):
+    member = ctx.message.author
+    if channel is None or msg is None:
+        await client.say('```Proper usage is \n!!lovedetect @user1 @user2```')
+
+
+            
 bot.run(os.getenv('Token')) 
