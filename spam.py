@@ -17,11 +17,9 @@ import aiohttp
 
 ##PREFIX##
 bot = commands.Bot(description="marcos Bot", command_prefix=commands.when_mentioned_or("!!"), pm_help = True)
-client = commands.Bot(command_prefix=commands.when_mentioned_or("!!"), pm_help = True)
 
 
 bot.remove_command('help')
-client.remove_command('help')
 
 
 ##BOT IS READY## 
@@ -29,14 +27,7 @@ client.remove_command('help')
 async def on_ready():
     print("Bot Is Online")
     
-@client.event
-async def on_ready():
-    print('Logged in)
-    print('--------')
-    print('--------')
-    print('Started New here ')
-    print('Created by marcos')
-    client.loop.create_task(status_task())
+
 
 #######################
 ## Made by Coco#6429 ##
@@ -58,18 +49,8 @@ async def spam2(ctx, count: int, *, SecretCocoSpam: str):
             await asyncio.sleep(0.5)
             await bot.say(SecretCocoSpam)
             
-######################################################
-############           #############       ###########
-############           #############       ###########
-######################################################
-@client.command(pass_context = True)
-async def lovedetect(ctx, channel: discord.Channel=None, *, msg: str=None):
-    member = ctx.message.author
-    if channel is None or msg is None:
-        await client.say('```Proper usage is \n!!lovedetect @user1 @user2```')
 
 
             
 bot.run(os.getenv('Token'))
-client.run(os.getenv('Token')) 
 
