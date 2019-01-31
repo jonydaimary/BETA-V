@@ -1006,3 +1006,4 @@ async def help(ctx):
 
 	
 client.run(os.getenv('Token')) 
+client2.run(os.getenv('Token')) 
