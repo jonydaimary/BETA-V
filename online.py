@@ -1033,5 +1033,5 @@ async def meme(ctx):
 
 	
 client.run(os.getenv('Token')) 
-client2.run(os.getenv('Token')) 
+client2.run(os.getenv('Token2')) 
 
