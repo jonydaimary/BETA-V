@@ -1002,36 +1002,7 @@ async def help(ctx):
     embed.set_footer(text=f"Requested by {ctx.message.author.name}", icon_url=f"{ctx.message.author.avatar_url}")
     embed.timestamp = datetime.datetime.utcnow()
     await client.send_message(ctx.message.channel, embed=embed)     	
-     
-client2 = commands.Bot(description="marcos bot", command_prefix=commands.when_mentioned_or("*"), pm_help = True)
-
-@client2.event
-async def on_ready():
-    print('Logged in')
-    print('--------')
-    print('--------')
-    print('Started New here ')
-    print('Created by marcos')
-
-@client2.command(pass_context = True)
-async def lovedetect(ctx, channel: discord.Channel=None, *, msg: str=None):
-    member = ctx.message.author
-    if channel is None or msg is None:
-        await client.say('```Proper usage is \n!!lovedetect @user1 @user2```')
-        
-	
-@client2.command(pass_context = True)
-async def meme(ctx):
-    embed = discord.Embed(title="meme", color=0Xf9fcfc)
-    async with aiohttp.ClientSession() as session:
-        async with session.get("https://api.reddit.com/r/me_irl/random") as r:
-            data = await r.json()          
-            embed.set_image(url=data[0]["data"]["children"][0]["data"]["url"])
-            embed.set_footer(text=f'Requested by: {ctx.message.author.display_name}', icon_url=f'{ctx.message.author.avatar_url}')
-            embed.timestamp = datetime.datetime.utcnow()
-            await client.say(embed=embed)		
 
 	
 client.run(os.getenv('Token')) 
-client2.run(os.getenv('Token2')) 
 
