@@ -489,7 +489,6 @@ async def unban(ctx):
 async def clear(ctx, number: int):
   purge = await client.purge_from(ctx.message.channel, limit = number+1)	
 
-
 @client.command(pass_context = True)
 async def ping(ctx):
     if ctx.message.author.bot:
@@ -497,8 +496,9 @@ async def ping(ctx):
     else:
       channel = ctx.message.channel
       t1 = time.perf_counter()
+      await client.send_typing(channel)
       t2 = time.perf_counter()
-      await client.say("pong: {}ms".format(round((t2-t1)*1000)))
+      await client.say("Ping: {}ms".format(round((t2-t1)*1000)))
 			
 
 @client.command(pass_context=True)
