@@ -24,16 +24,19 @@ Forbidden= discord.Embed(title="Permission Denied", description="1) Please check
 client = commands.Bot(description="marcos bot", command_prefix=commands.when_mentioned_or("!!"), pm_help = True)
 client.remove_command('help')
 
-##BOT IS READY## 
-@bot.event
+@client.event
 async def on_ready():
-    print("Bot Is Online! And Ready To Spam")
- 
+    print('Logged in as '+client.user.name+' (ID:'+client.user.id+') | Connected to '+str(len(client.servers))+' servers | Connected to '+str(len(set(client.get_all_members())))+' users')
+    print('--------')
+    print('--------')
+    print('Started New here ')
+    print('Created by marcos')
+    client.loop.create_task(status_task())
 
 
-#######################
+###########################
 ## Made by marcos.#0290  ##
-#######################
+###########################
 @bot.command(pass_context=True)
 async def spam(ctx, count: int, *, SecretCocoSpam: str):
     if ctx.message.author.id == "498378677512437762":
@@ -54,7 +57,7 @@ async def spam2(ctx, count: int, *, SecretCocoSpam: str):
 ####################################
 
 
-@client.command(pass_context = True)
+@bot.command(pass_context = True)
 async def lovedetect(ctx, channel: discord.Channel=None, *, msg: str=None):
     member = ctx.message.author
     if channel is None or msg is None:
