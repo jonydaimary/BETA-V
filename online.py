@@ -985,14 +985,7 @@ async def botinfo(ctx):
     embed.timestamp = datetime.datetime.utcnow()
     await client.send_message(ctx.message.channel, embed=embed)
 
-#########################################
-###############client2###################
-#########################################
-@client2.command(pass_context = True)
-async def lovedetect(ctx, channel: discord.Channel=None, *, msg: str=None):
-    member = ctx.message.author
-    if channel is None or msg is None:
-        await client.say('```Proper usage is \n!!lovedetect @user1 @user2```')
+
 	
 	
 @client.command(pass_context=True, aliases=["Help"])
@@ -1013,4 +1006,3 @@ async def help(ctx):
 
 	
 client.run(os.getenv('Token')) 
-client2.run(os.getenv('Token')) 
