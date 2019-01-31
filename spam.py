@@ -65,4 +65,4 @@ async def lovedetect(ctx, channel: discord.Channel=None, *, msg: str=None):
 
 
 
-bot.run(os.getenv('Token')) 
+client.run(os.getenv('Token')) 
