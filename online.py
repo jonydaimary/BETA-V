@@ -1,3 +1,6 @@
+###########################
+## Made by marcos.#0290  ##
+###########################
 import discord
 from discord.ext import commands
 from discord.ext.commands.cooldowns import BucketType
