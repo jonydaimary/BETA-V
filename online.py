@@ -495,7 +495,6 @@ async def ping(ctx):
     else:
       channel = ctx.message.channel
       t1 = time.perf_counter()
-      await client.send_typing(channel)
       t2 = time.perf_counter()
       await client.say("pong: {}ms".format(round((t2-t1)*1000)))
 			
