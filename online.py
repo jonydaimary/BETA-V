@@ -613,7 +613,6 @@ async def cat(ctx):
 	
 @client.command(pass_context=True, no_pm=True, aliases=["Fox"])
 async def fox(ctx):
-    await client.send_typing(ctx.message.channel)
     try:
         url = "https://randomfox.ca/floof"
         response = requests.get(url)
