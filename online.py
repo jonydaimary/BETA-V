@@ -461,7 +461,7 @@ async def ban(ctx,user:discord.Member):
       await client.say(user.name+' was banned. Good bye '+user.name+'!')
       for channel in member.server.channels:
         if channel.name == 'information-log':
-            embed=discord.Embed(title="User banned!", description="**{0}** banned by **{1}**!".format(member, ctx.message.author), color=0x38761D)
+            embed=discord.Embed(title="User banned!", description="**{0}** banned by **{1}**!".format(member, ctx.message.author), color=0xf9fcfc)
             await client.send_message(channel, embed=embed)
 
 
