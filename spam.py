@@ -16,7 +16,7 @@ import json
 import aiohttp	
 
 ##PREFIX##
-bot = commands.Bot(description="marcos Official Bot", command_prefix=commands.when_mentioned_or("!!"), pm_help = True)
+bot = commands.Bot(description="marcos Bot", command_prefix=commands.when_mentioned_or("!!"), pm_help = True)
 client = commands.Bot(command_prefix=commands.when_mentioned_or("!!"), pm_help = True)
 
 
