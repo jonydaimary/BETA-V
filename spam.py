@@ -53,7 +53,10 @@ async def spam2(ctx, count: int, *, SecretCocoSpam: str):
             await asyncio.sleep(0.5)
             await bot.say(SecretCocoSpam)
             
-########
+######################################################
+############           #############       ###########
+############           #############       ###########
+######################################################
 @client.command(pass_context = True)
 async def lovedetect(ctx, channel: discord.Channel=None, *, msg: str=None):
     member = ctx.message.author
