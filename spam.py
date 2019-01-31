@@ -21,6 +21,7 @@ client = commands.Bot(command_prefix=commands.when_mentioned_or("!!"), pm_help =
 
 
 bot.remove_command('help')
+client.remove_command('help')
 
 
 ##BOT IS READY## 
