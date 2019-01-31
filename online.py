@@ -673,13 +673,12 @@ async def serverinvite(ctx):
 
 @client.command(pass_context=True)
 async def invites(ctx, user:discord.Member=None):
-    r, g, b = tuple(int(x * 255) for x in colorsys.hsv_to_rgb(random.random(), 1, 1))
     if ctx.message.server.id == '519935085739507722':
         await client.say('You should use ``!!checkinvites``')
         return
     if user is None:
         total_uses=0
-        embed=discord.Embed(title='__Invites from {}__'.format(ctx.message.author.name), color = discord.Color((r << 16) + (g << 8) + b))
+        embed=discord.Embed(title='__Invites from {}__'.format(ctx.message.author.name), color = 0xf9fcfc)
         invites = await client.invites_from(ctx.message.server)
         for invite in invites:
           if invite.inviter == ctx.message.author:
@@ -692,7 +691,7 @@ async def invites(ctx, user:discord.Member=None):
         await client.say(embed=embed)
     else:
         total_uses=0
-        embed=discord.Embed(title='__Invites from {}__'.format(user.name), color = discord.Color((r << 16) + (g << 8) + b))
+        embed=discord.Embed(title='__Invites from {}__'.format(user.name), color = 0xf9fcfc)
         invites = await client.invites_from(ctx.message.server)
         for invite in invites:
           if invite.inviter == user:
