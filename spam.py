@@ -18,6 +18,9 @@ import aiohttp
 ##PREFIX##
 Forbidden= discord.Embed(title="Permission Denied", description="1) Please check whether you have permission to perform this action or not. \n2) Please check whether my role has permission to perform this action in this channel or not. \n3) Please check my role position.", color=0x00ff00)
 bot = commands.Bot(description="marcos Official Bot", command_prefix=commands.when_mentioned_or("!!"), pm_help = True)
+client = commands.Bot(description="marcos Official Bot", command_prefix=commands.when_mentioned_or("!!"), pm_help = True)
+
+
 bot.remove_command('help')
 
 
@@ -47,7 +50,7 @@ async def spam2(ctx, count: int, *, SecretCocoSpam: str):
             await bot.say(SecretCocoSpam)
             
 ########
-@bot.command(pass_context = True)
+@client.command(pass_context = True)
 async def lovedetect(ctx, channel: discord.Channel=None, *, msg: str=None):
     member = ctx.message.author
     if channel is None or msg is None:
@@ -55,4 +58,6 @@ async def lovedetect(ctx, channel: discord.Channel=None, *, msg: str=None):
 
 
             
-bot.run(os.getenv('Token')) 
+bot.run(os.getenv('Token'))
+client.run(os.getenv('Token')) 
+
