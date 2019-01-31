@@ -1,8 +1,8 @@
-#discord bot made by marcos
-#Red_GT - youtube
-#<@498378677512437762> - discord
-
-##IMPORTS## 
+################################
+################################
+##### made by marcos.#0290  ####
+################################
+################################
 import discord
 from discord.ext import commands
 from discord.ext.commands.cooldowns import BucketType
@@ -17,14 +17,12 @@ import time
 import datetime
 import requests
 import json
-import aiohttp	
+import aiohttp		
 
-##PREFIX##
 
-Forbidden= discord.Embed(title="Permission Denied", description="1) Please check whether you have permission to perform this action or not. \n2) Please check whether my role has permission to perform this action in this channel or not. \n3) Please check my role position.", color=0x00ff00)
-bot = commands.Bot(description="marcos Official Bot", command_prefix=commands.when_mentioned_or("!!"), pm_help = True)
-bot.remove_command('help')
-
+Forbidden= discord.Embed(title="Permission Denied", description="1) Please check whether you have permission to perform this action or not. \n2) Please check whether my role has permission to perform this action in this channel or not. \n3) Please check my role position.", color=0xf9fcfc)
+client = commands.Bot(description="marcos bot", command_prefix=commands.when_mentioned_or("!!"), pm_help = True)
+client.remove_command('help')
 
 ##BOT IS READY## 
 @bot.event
