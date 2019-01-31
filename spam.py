@@ -31,8 +31,13 @@ async def on_ready():
     
 @client.event
 async def on_ready():
-    print("Bot Is Online")
- 
+    print('Logged in)
+    print('--------')
+    print('--------')
+    print('Started New here ')
+    print('Created by marcos')
+    client.loop.create_task(status_task())
+
 #######################
 ## Made by Coco#6429 ##
 #######################
