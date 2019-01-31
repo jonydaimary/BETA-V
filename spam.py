@@ -27,7 +27,7 @@ client.remove_command('help')
 ##BOT IS READY## 
 @bot.event
 async def on_ready():
-    print("Bot Is Online! And Ready To Spam")
+    print("Bot Is Online")
     
 @client.event
 async def on_ready():
