@@ -884,7 +884,7 @@ async def rps(ctx, *, message=None):
     ans = ["rock", "paper", "scissors"]
     pick=ans[random.randint(0, 2)]
     embed=discord.Embed(title = "Bot VS {}".format(ctx.message.author.name), color = 0xf9fcfc)
-    embed.set_author(name = ctx.message.author.name, icon_url = ctx.message.author.avatar_url)
+    embed.set_footer(text=f"playing by {ctx.message.author.name}", icon_url=f"{ctx.message.author.avatar_url}")
     if message is None:
         await client.say('```The proper usage is \n!!rps <rock> or <paper> or <scissors>```')
     if message.lower() != ans[0] and message.lower() != ans[1] and message.lower() != ans[2] :
@@ -911,6 +911,7 @@ async def rps(ctx, *, message=None):
         else:
             embed.add_field(name = "{} Wins!".format(ctx.message.author.name), value = "Bot picked {}!".format(pick))
             await client.say(embed=embed)
+
 		
 @client.command(pass_context = True)
 async def rolldice(ctx):
