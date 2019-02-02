@@ -28,11 +28,11 @@ client.remove_command('help')
 async def status_task():
     while True:
         await client.change_presence(game=discord.Game(name='!!help | marcos.#0290', type=2)) 
-        await asyncio.sleep(50)
+        await asyncio.sleep(120)
         await client.change_presence(game=discord.Game(name='BETA VERSION')) 
-        await asyncio.sleep(50)
-        await client.change_presence(game=discord.Game(name='with ' +str(len(set(client.get_all_members())))+' users'))
-        await asyncio.sleep(50)
+        await asyncio.sleep(120)
+        await client.change_presence(game=discord.Game(name='with ' +str(len(set(client.get_all_members())))+' users', type=3))
+        await asyncio.sleep(120)
        
 	
 	
