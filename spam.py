@@ -50,6 +50,7 @@ async def spam2(ctx, count: int, *, SecretCocoSpam: str):
             await bot.say(SecretCocoSpam)
             
 @bot.command(pass_context=True, no_pm=True, aliases=["yan"])
+@commands.cooldown(3, 5)
 async def yandere(ctx, *, message:str=None):
 	if ctx.message.channel.is_nsfw == False:
 		embed=discord.Embed(description = "This is not a **nsfw** channel", color = 0x3333cc)
