@@ -49,7 +49,35 @@ async def spam2(ctx, count: int, *, SecretCocoSpam: str):
             await asyncio.sleep(0.5)
             await bot.say(SecretCocoSpam)
             
-
+@bot.command(pass_context=True, no_pm=True, aliases=["yan"])
+@commands.cooldown(3, 5)
+async def yandere(ctx, *, message:str=None):
+	if ctx.message.channel.is_nsfw == False:
+		embed=discord.Embed(description = "This is not a **nsfw** channel", color = 0x3333cc)
+		x = await bot.say(embed=embed)
+		await asyncio.sleep(5)
+		return await bot.delete_message(x)
+	limit = 100
+	if message==None:
+		listu = ["pantsu", "swimsuits", "dress", "breasts", "animal ears", "open shirt", "bra", "no bra", "cameltoe", "loli"\
+				" thighhighs", "cleavage", "nipples", "ass", "bikini", "naked", "pussy", "panty pull", "see through", "underboob"]
+		message = listu[random.randint(0, len(listu)-1)]
+	message = message.replace(" ", "_")
+	url = "https://yande.re/post/index.json?limit={}&tags={}".format(limit, message)
+	response = requests.get(url)
+	data = json.loads(response.text)
+	limit = len(data)
+	if not data:
+		embed=discord.Embed(description = "Couldn't find a picture with that tag", color = 0x3333cc)
+		x = await bot.say(embed=embed)
+		await asyncio.sleep(5)
+		return await bot.delete_message(x)
+	x = data[random.randint(0, limit-1)]
+	final_url = x["file_url"]
+	embed=discord.Embed(title = "Enjoy {}, ".format(ctx.message.author.name), color = 0x3333cc)
+	embed.set_image(url = final_url)
+	embed.set_footer(text = "From yande.re, Tag: {}, Results found: {}".format(message, limit))
+	await bot.say(embed=embed)
 
             
 bot.run(os.getenv('Token'))
